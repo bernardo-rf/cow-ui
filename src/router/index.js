@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import store from '../store.js'
+import {store} from '../store.js'
 import { isAfter } from "date-fns"
 
 import NotFound from "../components/HomePage.vue";

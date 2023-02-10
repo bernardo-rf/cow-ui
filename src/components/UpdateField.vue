@@ -7,7 +7,7 @@
                         <template v-if="isLoadingPanel">
                             <div class="columns is-centered">
                                 <div class="column is-12 has-text-centered">
-                                    <b-icon pack="fas" icon="sync-alt" size="is-large" custom-class="fa-spin"></b-icon>
+                                    <b-icon pack="fas" icon="rotate" size="is-large" custom-class="fa-spin"></b-icon>
                                 </div>
                             </div>
                         </template>

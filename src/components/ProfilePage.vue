@@ -28,7 +28,7 @@
                                         <div class="column is-12">
                                             <figure class="image is-128x128 is-horizontal-center is-vcentered">
                                                 <img class="thumbnail image is-rounded"
-                                                    :src="this.fileURL == '' || this.fileURL == null ? 'assets/img/blank_user_image.png' : this.fileURL">
+                                                    :src="this.fileURL == '' || this.fileURL == null ? require('../assets/img/blank_user_image.png') : this.fileURL">
                                             </figure>
                                             <b-field v-if="isUpdate" class="file is-dark"
                                                 :class="{ 'has-name': !!file }">
@@ -93,7 +93,7 @@
                                                         <template slot="label">Birth Date <span
                                                                 class="has-text-danger">*</span></template>
                                                         <b-datetimepicker rounded v-model="birthDate"
-                                                            placeholder="Click to select..." icon="calendar-today"
+                                                            placeholder="Click to select..."
                                                             :datepicker="{ showWeekNumber }" horizontal-time-picker
                                                             :max-datetime="dateNow">
                                                         </b-datetimepicker>
@@ -103,8 +103,8 @@
                                             <template v-else>
                                                 <b-field expanded>
                                                     <template slot="label">Birth Date</template>
-                                                    <b-datetimepicker rounded v-model="birthDate"
-                                                        placeholder="Click to select..." icon="calendar-today"
+                                                    <b-datetimepicker v-model="birthDate"
+                                                        placeholder="Click to select..."
                                                         :datepicker="{ showWeekNumber }" horizontal-time-picker disabled
                                                         :max-datetime="dateNow">
                                                     </b-datetimepicker>
@@ -141,11 +141,12 @@
                                                     <div class="columns">
                                                         <div class="column is-1">
                                                             <b-icon class="title"
-                                                                :icon="user.userType == 'FARMER' ? 'tractor' : user.userType == 'VETERINARY' ? 'stethoscope' : 'currency-eur'">
+                                                                :icon="user.type == 'FARMER' ? 'fa-tractor' : user.type == 'VETERINARY' ? 'fa-paw' : 'fa-money-bill-transfer'"
+                                                                size="is-medium">
                                                             </b-icon>
                                                         </div>
                                                         <div class="column">
-                                                            <h4 class="title is-4">{{ user.userType }}</h4>
+                                                            <h4 class="title is-4">{{ user.type }}</h4>
                                                         </div>
                                                     </div>
                                                 </b-message>
@@ -177,7 +178,7 @@
                                                                 Password Update
                                                             </p>
                                                             <a class="card-header-icon">
-                                                                <b-icon :icon="props.open ? 'menu-up' : 'menu-down'">
+                                                                <b-icon :icon="props.open ? 'arrow-up' : 'arrow-down'">
                                                                 </b-icon>
                                                             </a>
                                                         </div>
