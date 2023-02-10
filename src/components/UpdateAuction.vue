@@ -7,7 +7,7 @@
                         <template v-if="isLoadingPanel">
                             <div class="columns is-centered">
                                 <div class="column is-12 has-text-centered">
-                                    <b-icon pack="fas" icon="sync-alt" size="is-large" custom-class="fa-spin"></b-icon>
+                                    <b-icon pack="fas" icon="rotate" size="is-large" custom-class="fa-spin"></b-icon>
                                 </div>
                             </div>
                         </template>
@@ -37,7 +37,7 @@
                                                         <template slot="label">Start Date <span
                                                                 class="has-text-danger">*</span></template>
                                                         <b-datetimepicker rounded v-model="auction.startDate"
-                                                            placeholder="Click to select..." icon="calendar-today"
+                                                            placeholder="Click to select..." 
                                                             :datepicker="{ showWeekNumber }"
                                                             :timepicker="{ enableSeconds, hourFormat: format }"
                                                             :min-datetime="dateNow" :max-datetime="auction.endDate"
@@ -54,7 +54,7 @@
                                                         <template slot="label">End Date <span
                                                                 class="has-text-danger">*</span></template>
                                                         <b-datetimepicker rounded v-model="auction.endDate"
-                                                            placeholder="Click to select..." icon="calendar-today"
+                                                            placeholder="Click to select..." 
                                                             :datepicker="{ showWeekNumber }"
                                                             :timepicker="{ enableSeconds, hourFormat: format }"
                                                             :min-datetime="auction.startDate ? auction.startDate : dateNow"

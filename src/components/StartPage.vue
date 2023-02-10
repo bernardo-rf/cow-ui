@@ -127,7 +127,6 @@ export default {
     },
     methods: {
         getInformation() {
-            console.log(this.$parent)
             axios.get(`http://${process.env.VUE_APP_API_URL}bovines/${this.$parent.user.idWallet}/own`) // eslint-disable-line
                 .then(response => {
                     this.cows = response.data
@@ -150,7 +149,7 @@ export default {
                     this.cowsColors.splice(0, this.cowsColors.length - this.cowsLabels.length)
 
                     var url = ""
-                    if (this.$parent.user.userType == 'VETERINARY') {
+                    if (this.$parent.user.type == 'VETERINARY') {
                         url = `http://${process.env.VUE_APP_API_URL}appointment/user/${this.$parent.user.idUser}`
                     } else {
                         url = `http://${process.env.VUE_APP_API_URL}appointment/bovines/${this.$parent.user.idWallet}`

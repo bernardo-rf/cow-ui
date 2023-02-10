@@ -45,7 +45,8 @@
                                                         </b-select>
                                                     </b-field>
                                                 </validation-provider>
-                                                <b-button class="has-margin-top-20" type="is-primary" expanded rounded native-type="submit" :loading="isLoading" >Register</b-button>
+                                                <br/>   
+                                                <b-button class="has-margin-top-20" type="is-primary" expanded rounded native-type="submit" :loading="isLoading">Register</b-button>
                                             </form>
                                         </validation-observer>
                                     </div>

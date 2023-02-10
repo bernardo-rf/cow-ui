@@ -2,9 +2,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import {addSeconds} from 'date-fns'
 
-Vue.use(Vuex)
+Vue.use(Vuex)   
 
-export default new Vuex.Store({
+export const store = new Vuex.Store({
     state(){
         return{
             accessToken: localStorage.getItem("accessToken"),

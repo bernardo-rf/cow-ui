@@ -26,7 +26,8 @@
                                                         <b-input rounded type="password" v-model="password"></b-input>
                                                     </b-field>
                                                 </validation-provider>
-                                                <b-button class="has-margin-top-20" type="is-primary" expanded rounded native-type="submit" :loading="isLoading">Login</b-button>
+                                                <br/>
+                                                <b-button class="has-margin-top-100" type="is-primary" expanded rounded native-type="submit" :loading="isLoading">Login</b-button>
                                             </form>
                                         </validation-observer>
                                     </div>

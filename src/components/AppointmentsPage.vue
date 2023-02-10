@@ -6,7 +6,7 @@
                 <template v-if="isLoading">
                     <div class="columns is-centered">
                         <div class="column is-12 has-text-centered">
-                            <b-icon pack="fas" icon="sync-alt" size="is-large" custom-class="fa-spin"></b-icon>
+                            <b-icon pack="fas" icon="rotate" size="is-large" custom-class="fa-spin"></b-icon>
                         </div>
                     </div>
                 </template>
@@ -139,7 +139,7 @@
                 <template v-if="isLoading">
                     <div class="columns is-centered">
                         <div class="column is-12 has-text-centered">
-                            <b-icon pack="fas" icon="sync-alt" size="is-large" custom-class="fa-spin"></b-icon>
+                            <b-icon pack="fas" icon="rotate" size="is-large" custom-class="fa-spin"></b-icon>
                         </div>
                     </div>
                 </template>
@@ -265,7 +265,7 @@ export default {
             this.pastAppointments = []
             this.currentAppointments = []
             var url = ''
-            if (this.$parent.user.userType == 'VETERINARY') {
+            if (this.$parent.user.type == 'VETERINARY') {
                 url = `http://${process.env.VUE_APP_API_URL}appointment/user/${this.$parent.user.idUser}`
             } else {
                 url = `http://${process.env.VUE_APP_API_URL}appointment/bovines/${this.$parent.user.idWallet}`

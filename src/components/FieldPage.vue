@@ -5,7 +5,7 @@
                 <template v-if="isLoading">
                     <div class="columns is-centered">
                         <div class="column is-12 has-text-centered">
-                            <b-icon pack="fas" icon="sync-alt" size="is-large" custom-class="fa-spin">></b-icon>
+                            <b-icon pack="fas" icon="rotate" size="is-large" custom-class="fa-spin">></b-icon>
                         </div>
                     </div>
                 </template>
@@ -118,9 +118,9 @@
                                     <div style="height: 500px">
                                         <l-map ref="map" :zoom="zoom" :center="center">
                                             <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-                                            <l-marker :lat-lng="[field.latitude, field.longitude] ">
+                                            <l-marker :lat-lng="[field.latitude, field.longitude]">
                                                 <l-popup>{{cowsCount}}</l-popup>
-                                                <l-icon :icon-size="[32,32]"  icon-url="/public/img/icon.png"></l-icon>
+                                                <l-icon :icon-size="[32,32]"  :icon-url="require('../assets/img/icon.png')"></l-icon>
                                             </l-marker>
                                             <l-circle :lat-lng="[field.latitude, field.longitude ]" :radius="500">
                                                 <l-popup :content=cowsCount />

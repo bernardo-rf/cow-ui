@@ -10,7 +10,7 @@
                 <b-navbar-item tag="router-link" to="/start">
                     Start
                 </b-navbar-item>
-                <template v-if="user.userType != 'VETERINARY'">
+                <template v-if="user.type != 'VETERINARY'">
                     <b-navbar-dropdown label="Auctions" type="is-dark">
                         <b-navbar-item tag="router-link" to="/auctions">
                             Auctions
@@ -21,7 +21,7 @@
                     </b-navbar-dropdown>
                 </template>
                 <b-navbar-dropdown label="Appointments" type="is-dark">
-                    <div v-if="user.userType == 'VETERINARY'">
+                    <div v-if="user.type == 'VETERINARY'">
                         <b-navbar-item tag="router-link" to="/appointments">
                         Appointments
                         </b-navbar-item>
@@ -32,11 +32,11 @@
                     <b-navbar-item tag="router-link" to="/appointmentRequests">
                         Appointments Request
                     </b-navbar-item>
-                    <b-navbar-item v-if="user.userType != 'VETERINARY'" tag="router-link" to="/newAppointmentRequest/0">
+                    <b-navbar-item v-if="user.type != 'VETERINARY'" tag="router-link" to="/newAppointmentRequest/0">
                         Create Appointment Request
                     </b-navbar-item>
                 </b-navbar-dropdown>
-                <b-navbar-dropdown v-if="user.userType != 'VETERINARY'" label="Cows" type="is-dark">
+                <b-navbar-dropdown v-if="user.type != 'VETERINARY'" label="Cows" type="is-dark">
                     <b-navbar-item tag="router-link" to="/cows">
                         Cows
                     </b-navbar-item>
@@ -44,7 +44,7 @@
                         Create Cow
                     </b-navbar-item>
                 </b-navbar-dropdown>
-                <b-navbar-dropdown v-if="user.userType != 'VETERINARY'" label="Fields" type="is-dark">
+                <b-navbar-dropdown v-if="user.type != 'VETERINARY'" label="Fields" type="is-dark">
                     <b-navbar-item tag="router-link" to="/fields">
                         Fields
                     </b-navbar-item>
@@ -57,11 +57,11 @@
             <template slot="end">
                 <figure class="image is-32x32">
                     <img class="image is-rounded"
-                        :src="this.fileURL == '' || this.fileURL == null ? './assets/img/blank_user_image.png' : this.fileURL">
+                        :src="this.fileURL == '' || this.fileURL == null ? require('../assets/img/blank_user_image.png') : this.fileURL">
                 </figure>
                 <b-navbar-dropdown>
                     <template slot="label"><span class="has-margin-right-10">{{ username }}</span>
-                        <b-tag type="is-volby">{{ user.userType }}</b-tag>
+                        <b-tag type="is-volby">{{ user.type }}</b-tag>
                     </template>
                     <b-navbar-item @click="profile">
                         Profile
@@ -106,7 +106,7 @@ export default {
         return {
             title: "",
             backRedirect: "",
-            user: {},//this.$store.getters.user,
+            user: this.$store.getters.user,
             username: "",
             fileURL: null
         }

@@ -6,7 +6,7 @@
                 <template v-if="isLoading">
                     <div class="columns is-centered">
                         <div class="column is-12 has-text-centered">
-                            <b-icon pack="fas" icon="sync-alt" size="is-large" custom-class="fa-spin"></b-icon>
+                            <b-icon pack="fas" icon="rotate" size="is-large" custom-class="fa-spin"></b-icon>
                         </div>
                     </div>
                 </template>
@@ -77,17 +77,17 @@
                                 </b-table-column>
                                 <b-table-column label="Actions" :visible="visibleValue">
                                     <div v-if="props.row.status == 0" class="columns">
-                                        <div v-if="$parent.user.userType == 'VETERINARY'" class="column">
+                                        <div v-if="$parent.user.type == 'VETERINARY'" class="column">
                                             <b-button @click="updateStatus(1, props.row.idAppointmentRequest)"
                                                 icon-left="check" type="is-success" size="is-small" rounded>Accept
                                             </b-button>
                                         </div>
-                                        <div v-if="$parent.user.userType == 'VETERINARY'" class="column">
+                                        <div v-if="$parent.user.type == 'VETERINARY'" class="column">
                                             <b-button @click="updateStatus(2, props.row.idAppointmentRequest)"
                                                 icon-left="close" type="is-danger" size="is-small" rounded>Cancel
                                             </b-button>
                                         </div>
-                                        <div v-if="$parent.user.userType != 'VETERINARY'" class="column">
+                                        <div v-if="$parent.user.type != 'VETERINARY'" class="column">
                                             <b-button icon-left="refresh" type="is-dark" size="is-small"
                                                 tag="router-link"
                                                 :to="'appointmentRequest/' + props.row.idAppointmentRequest + '/update'"
@@ -132,8 +132,7 @@ export default {
             currentPage: 1,
             isPaginationSimple: false,
             paginationPosition: 'bottom',
-            visibleValue: false,
-            userType: ''
+            visibleValue: false
         }
     },
     computed: {
@@ -148,7 +147,7 @@ export default {
     methods: {
         getAppointmentRequests() {
             var url = ""
-            if (this.$parent.user.userType == 'VETERINARY') {
+            if (this.$parent.user.type == 'VETERINARY') {
                 url = `http://${process.env.VUE_APP_API_URL}appointmentRequest/user/`
             } else {
                 url = `http://${process.env.VUE_APP_API_URL}appointmentRequest/userRequest/`

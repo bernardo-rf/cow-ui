@@ -7,7 +7,7 @@
 						<template v-if="isLoadingPanel">
 							<div class="columns is-centered">
 								<div class="column is-12 has-text-centered">
-									<b-icon pack="fas" icon="sync-alt" size="is-large" custom-class="fa-spin"></b-icon>
+									<b-icon pack="fas" icon="rotate" size="is-large" custom-class="fa-spin"></b-icon>
 								</div>
 							</div>
 						</template>
@@ -32,7 +32,7 @@
 												<div class="column is-12">
 													<figure class="image is-128x128 is-horizontal-center is-vcentered">
 														<img class="thumbnail image is-rounded"
-															:src="this.file == undefined ? 'img/no_image.png' : this.fileURL">
+															:src="this.file == undefined ? require('../assets/img/blank_cow_image.png') : this.fileURL">
 													</figure>
 													<b-field class="file is-dark" :class="{ 'has-name': !!file }">
 														<b-upload v-model="file"
@@ -69,7 +69,7 @@
 															<template slot="label">Birth Date <span
 																	class="has-text-danger">*</span></template>
 															<b-datetimepicker rounded v-model="birthDate"
-																placeholder="Click to select..." icon="calendar-today"
+																placeholder="Click to select..." 
 																:datepicker="{ showWeekNumber }"
 																:timepicker="{ enableSeconds, hourFormat: format }"
 																:max-datetime="dateNow" horizontal-time-picker>
