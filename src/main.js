@@ -75,14 +75,14 @@ library.add(
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
+import 'leaflet/dist/leaflet.css';
+
 import Buefy from "buefy";
 import "buefy/dist/buefy.css";
 Vue.use(Buefy, {
   defaultIconComponent: "font-awesome-icon",
   defaultIconPack: "fas",
 });
-
-import 'leaflet/dist/leaflet.css';
 
 Vue.config.productionTip = false;
 
