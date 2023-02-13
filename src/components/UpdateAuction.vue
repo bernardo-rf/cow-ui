@@ -2,8 +2,8 @@
     <div>
         <div class="columns">
             <div class="column">
-                <div class="card box shadow has-margin-bottom-40">
-                    <div class="card-content has-padding-bottom-0">
+                <div class="card box shadow mb-3">
+                    <div class="card-content mb-0">
                         <template v-if="isLoadingPanel">
                             <div class="columns is-centered">
                                 <div class="column is-12 has-text-centered">
@@ -36,7 +36,7 @@
                                                         :message="validationContext.errors[0]">
                                                         <template slot="label">Start Date <span
                                                                 class="has-text-danger">*</span></template>
-                                                        <b-datetimepicker rounded v-model="auction.startDate"
+                                                        <b-datetimepicker v-model="auction.startDate"
                                                             placeholder="Click to select..." 
                                                             :datepicker="{ showWeekNumber }"
                                                             :timepicker="{ enableSeconds, hourFormat: format }"
@@ -53,7 +53,7 @@
                                                         :message="validationContext.errors[0]">
                                                         <template slot="label">End Date <span
                                                                 class="has-text-danger">*</span></template>
-                                                        <b-datetimepicker rounded v-model="auction.endDate"
+                                                        <b-datetimepicker v-model="auction.endDate"
                                                             placeholder="Click to select..." 
                                                             :datepicker="{ showWeekNumber }"
                                                             :timepicker="{ enableSeconds, hourFormat: format }"
@@ -68,7 +68,7 @@
                                             <div class="column">
                                                 <validation-provider rules="required" name="Cow"
                                                     v-slot="validationContext">
-                                                    <b-field rounded label="Cow"
+                                                    <b-field label="Cow"
                                                         :type="getValidationState(validationContext)"
                                                         :message="validationContext.errors[0]">
                                                         <template slot="label">Cow to Sell <span

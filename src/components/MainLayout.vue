@@ -60,7 +60,7 @@
                         :src="this.fileURL == '' || this.fileURL == null ? require('../assets/img/blank_user_image.png') : this.fileURL">
                 </figure>
                 <b-navbar-dropdown>
-                    <template slot="label"><span class="has-margin-right-10">{{ username }}</span>
+                    <template slot="label"><span class="mx-3">{{ username }}</span>
                         <b-tag type="is-volby">{{ user.type }}</b-tag>
                     </template>
                     <b-navbar-item @click="profile">
@@ -73,9 +73,9 @@
             </template>
         </b-navbar>
         <div class="section">
-            <div class="container main has-padding-top-0 has-margin-bottom-70">
-                <div class="is-flex is-vcentered has-margin-bottom-30">
-                    <b-button class="has-margin-top-15 has-margin-right-15" v-if="backRedirect" tag="router-link"
+            <div class="container main pt-0 mb-1">
+                <div class="is-flex is-vcentered mb-1">
+                    <b-button class="mt-3 mr-3" v-if="backRedirect" tag="router-link"
                         :to="backRedirect" rounded type="is-info" size="is-small" icon-left="arrow-left"></b-button>
                     <h1 class="title is-1">
                         {{ title }}
@@ -84,7 +84,7 @@
                 <router-view @title="onTitle" @back="onBackButton"></router-view>
             </div>
         </div>
-        <footer class="footer volby-footer has-padding-top-100">
+        <footer class="footer volby-footer mt-1">
             <div class="columns is-vcentered has-text-centered">
                 <div class="column is-3">
                     <img class="image is-horizontal-center" width="50%" :src="require('../assets/img/credits_ipleiria.png')" />

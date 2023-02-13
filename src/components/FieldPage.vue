@@ -12,7 +12,7 @@
                 <template v-else>
                     <div class="columns is-vcentered">
                         <div class="column is-6">
-                            <span class="is-size-3 has-margin-right-5">{{field.fieldDescription}}</span>
+                            <span class="is-size-3 mr-2">{{field.fieldDescription}}</span>
                         </div>
                         <template>
                             <div class="column is-6 has-text-right crud-button">
@@ -79,11 +79,11 @@
                                     </template>
                                     <template v-else>
                                         <div class="card box" v-for="cow in cows" :key="cow.id">
-                                            <div class="card-content has-padding-top-0 has-padding-bottom-0">
+                                            <div class="card-content pt-0 mb-0">
                                                 <div class="columns is-vcentered">
                                                     <div class="column is-2">
                                                         <figure class="image is-64x64 is-horizontal-center">
-                                                            <img class="image is-rounded" :src="cow.imageCID == '' ? 'img/no_image.png' : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID"  :title="cow.SerialNumber">
+                                                            <img class="image is-rounded" :src="cow.imageCID == '' ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID"  :title="cow.SerialNumber">
                                                         </figure>
                                                     </div>
                                                     <div class="column is-2">

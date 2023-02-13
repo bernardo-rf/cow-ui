@@ -34,7 +34,7 @@
                         </div>
                     </template>
                     <div class="card box" v-for="auction in currentAuctions" :key="auction.id">
-                        <div class="card-content has-padding-top-0 has-padding-bottom-0">
+                        <div class="card-content pt-0 pb-0">
                             <div class="columns is-vcentered">
                                 <div class="column is-2 has-text-centered ">
                                     <router-link :to="'/auction/' + auction.idAuction"><span class="is-size-5">{{
@@ -108,7 +108,7 @@
                     </template>
                     <template v-else>
                         <div class="card box" v-for="auction in pastAuctions" :key="auction.id">
-                            <div class="card-content has-padding-top-0 has-padding-bottom-0">
+                            <div class="card-content pt-0 pb-0">
                                 <div class="columns is-vcentered">
                                     <div class="column is-2 has-text-centered ">
                                         <router-link :to="'/auction/' + auction.idAuction"><span class="is-size-5">{{
@@ -125,7 +125,7 @@
                                         <span class="has-text-weight-bold">Bovine: </span>
                                         <figure class="image is-64x64 is-horizontal-center">
                                             <img class="image is-rounded"
-                                                :src="auction.bovine.imageCID == '' ? 'img/no_image.png' : 'https://gateway.pinata.cloud/ipfs/' + auction.bovine.imageCID"
+                                                :src="auction.bovine.imageCID == '' ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + auction.bovine.imageCID"
                                                 :title="auction.bovine.serialNumber">
                                         </figure>
                                     </div>

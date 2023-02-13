@@ -2,8 +2,8 @@
     <div>
         <div class="columns">
             <div class="column">
-                <div class="card box shadow has-margin-bottom-40">
-                    <div class="card-content has-padding-bottom-0">
+                <div class="card box shadow mb-3">
+                    <div class="card-content mb-0">
                         <template v-if="isLoadingPanel">
                             <div class="columns is-centered">
                                 <div class="column is-12 has-text-centered">
@@ -132,7 +132,7 @@
                                         </div>
                                     </b-tab-item>
                                     <b-tab-item v-if="this.cows.length != 0" label="Cows">
-                                        <div class="has-margin-bottom-20">
+                                        <div class="mb-2">
                                             <b-tag type="is-info">NOTE</b-tag> <b>All selected cows</b> will change to
                                             the
                                             new field.

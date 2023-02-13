@@ -12,13 +12,13 @@
                 <template v-else>
                     <div class="columns is-vcentered">
                         <div class="column is-6">
-                            <span class="is-size-3 has-margin-right-5">Cow - {{ cow.serialNumber }}</span>
+                            <span class="is-size-3 mr-2">Cow - {{ cow.serialNumber }}</span>
                         </div>
                         <template>
                             <div class="column is-6 has-text-right">
-                                <b-button type="is-warning" rounded tag="router-link"
+                                <b-button class="mr-1" type="is-warning" rounded tag="router-link"
                                     :to="`/newAppointmentRequest/${cow.idBovine}`">Request Appointment</b-button>
-                                <b-button type="is-success" rounded tag="router-link" :to="`/newAuction`">
+                                <b-button class="mr-1" type="is-success" rounded tag="router-link" :to="`/newAuction`">
                                     Sell</b-button>
                                 <b-button type="is-dark" rounded tag="router-link" :to="`/cow/${cow.idBovine}/update`">
                                     Update</b-button>
@@ -33,7 +33,7 @@
                                         <div class="column is-2" style="padding-top: 60px ;">
                                             <figure class="image is-128x128 is-horizontal-center is-vcentered">
                                                 <img class="image is-rounded"
-                                                    :src="cow.imageCID == '' ? 'img/no_image.png' : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID">
+                                                    :src="cow.imageCID == '' ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID">
                                             </figure>
                                         </div>
                                         <div class="column is-10">
@@ -305,7 +305,7 @@
 <script>
 import { toDateTime } from '../helpers.js'
 import OrgChart from '@balkangraph/orgchart.js'
-import Timeline from 'timeline-vuejs'
+// import Timeline from 'timeline-vuejs'
 
 export default {
     data() {
@@ -360,7 +360,7 @@ export default {
                                             var imgAux = ''
                                             if (this.genealogy.length == 1) {
                                                 if (this.genealogy[0].imageCID == '') {
-                                                    imgAux = 'img/no_image.png'
+                                                    imgAux = require('../assets/img/blank_cow_image.png')
                                                 } else {
                                                     imgAux = 'https://gateway.pinata.cloud/ipfs/' + this.genealogy[0].imageCID
                                                 }
@@ -368,7 +368,7 @@ export default {
                                             } else {
                                                 this.genealogy.forEach(bovine => {
                                                     if (bovine.imageCID == '') {
-                                                        imgAux = 'img/no_image.png'
+                                                        imgAux = require('../assets/img/blank_cow_image.png')
                                                     } else {
                                                         imgAux = 'https://gateway.pinata.cloud/ipfs/' + bovine.imageCID
                                                     }
@@ -515,7 +515,7 @@ export default {
     },
     updated() {
         this.getTree();
-        Timeline(document.querySelectorAll('.timeline'));
+        // Timeline(document.querySelectorAll('.timeline'));
     }
 }
 </script>

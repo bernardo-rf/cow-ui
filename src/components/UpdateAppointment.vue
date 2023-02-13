@@ -2,8 +2,8 @@
     <div>
         <div class="columns">
             <div class="column">
-                <div class="card box shadow has-margin-bottom-40">
-                    <div class="card-content has-padding-bottom-0">
+                <div class="card box shadow mb-3">
+                    <div class="card-content mb-0">
                         <template v-if="isLoadingPanel">
                             <div class="columns is-centered">
                                 <div class="column is-12 has-text-centered">
@@ -53,7 +53,7 @@
                                                         :message="validationContext.errors[0]">
                                                         <template slot="label">Appointment Date <span
                                                                 class="has-text-danger">*</span></template>
-                                                        <b-datetimepicker rounded v-model="appointment.appointmentDate"
+                                                        <b-datetimepicker v-model="appointment.appointmentDate"
                                                             placeholder="Click to select..." 
                                                             :datepicker="{ showWeekNumber }" :min-datetime="appointment.appointmentDate"
                                                             :timepicker="{ enableSeconds, hourFormat: format }"
@@ -110,12 +110,12 @@
                                                 <template slot="label">Bovine</template>
                                             </b-field>
                                             <div class="card box">
-                                                <div class="card-content has-padding-top-0 has-padding-bottom-0">
+                                                <div class="card-content pt-0 mb-0">
                                                     <div class="columns is-vcentered">
                                                         <div class="column is-2">
                                                             <figure class="image is-64x64 is-horizontal-center">
                                                                 <img class="image is-rounded"
-                                                                    :src="cow.imageCID == ''  ? 'img/no_image.png' : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID"
+                                                                    :src="cow.imageCID == ''  ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID"
                                                                     :title="cow.SerialNumber">
                                                             </figure>
                                                         </div>

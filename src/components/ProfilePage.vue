@@ -2,8 +2,8 @@
     <div>
         <div class="columns">
             <div class="column">
-                <div class="card box shadow has-margin-bottom-40">
-                    <div class="card-content has-padding-bottom-0">
+                <div class="card box shadow mb-3">
+                    <div class="card-content mb-0">
                         <template>
                             <b-message v-if="isEmailNotUnique" type="is-warning" title="Update: Warning" aria-close-label="Close message">
                                 <strong>Information:</strong> The email is already taken. Please, choose another one.
@@ -92,7 +92,7 @@
                                                         :message="validationContext.errors[0]">
                                                         <template slot="label">Birth Date <span
                                                                 class="has-text-danger">*</span></template>
-                                                        <b-datetimepicker rounded v-model="birthDate"
+                                                        <b-datetimepicker v-model="birthDate"
                                                             placeholder="Click to select..."
                                                             :datepicker="{ showWeekNumber }" horizontal-time-picker
                                                             :max-datetime="dateNow">

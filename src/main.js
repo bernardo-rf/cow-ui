@@ -25,8 +25,6 @@ window.axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 window.axios.defaults.headers.common["Access-Control-Allow-Methods"] =
   "GET,PUT,POST,DELETE,PATCH,OPTIONS";
 
-import "../node_modules/timeline-vuejs/dist/timeline-vuejs.css";
-
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
@@ -77,14 +75,14 @@ library.add(
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
+import 'leaflet/dist/leaflet.css';
+
 import Buefy from "buefy";
 import "buefy/dist/buefy.css";
 Vue.use(Buefy, {
   defaultIconComponent: "font-awesome-icon",
   defaultIconPack: "fas",
 });
-
-import 'leaflet/dist/leaflet.css';
 
 Vue.config.productionTip = false;
 

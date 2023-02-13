@@ -31,7 +31,7 @@
                         </div>
                     </template>
                     <div class="card box" v-for="field in fields" :key="field.id">
-                        <div class="card-content has-padding-top-0 has-padding-bottom-0">
+                        <div class="card-content pt-0 mb-0">
                             <div class="columns is-vcentered">
                                 <div class="column is-2">
                                     <router-link :to="'/field/' + field.idField"><span class="is-size-5">{{field.fieldDescription}}</span></router-link>
