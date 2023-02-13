@@ -12,7 +12,7 @@
                 <template v-else>
                     <div class="columns is-vcentered">
                         <div class="column is-6">
-                            <span class="is-size-3 has-margin-right-5">{{ auction.auctionDescription }}</span>
+                            <span class="is-size-3 mr-2">{{ auction.auctionDescription }}</span>
                         </div>
                         <template v-if="auction.status == 0">
                             <div class="column is-6 has-text-right crud-button">
@@ -80,7 +80,7 @@
                                             <span class="is-size-3">Cow Information</span>
                                             <figure class="image is-256x256 is-horizontal-center">
                                                 <img class="image is-rounded"
-                                                    :src="auction.bovine.imageCID == '' ? 'img/no_image.png' : 'https://gateway.pinata.cloud/ipfs/' + auction.bovine.imageCID"
+                                                    :src="auction.bovine.imageCID == '' ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + auction.bovine.imageCID"
                                                     :title="auction.bovine.SerialNumber">
                                             </figure>
                                         </div>

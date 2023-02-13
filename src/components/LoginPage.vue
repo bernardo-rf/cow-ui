@@ -1,15 +1,15 @@
 <template>
     <div>
-        <div class="section has-padding-top-10">
+        <div class="section pt-1">
             <div class="container main">
                 <div class="columns is-centered is-full-height is-vcentered">
-                    <div class="column has-text-centered has-padding-top-30">
+                    <div class="column has-text-centered pt-4">
                         <img class="image is-128x128 is-horizontal-center" :src="require('../assets/img/icon.png')"/>
                         <h1 id="home_title">COW</h1>
                         <h4 id="home_subtitle">Login</h4>
                         <div class="columns is-centered">
                             <div class="column is-5">
-                                <div class="card box shadow has-padding-top-0 has-padding-left-0 has-padding-right-0 has-padding-bottom-0">
+                                <div class="card box shadow pt-0 pl-0 pr-0 pb-0">
                                     <div class="card-content">
                                         <b-message v-show="isInvalidLogin" type="is-danger">
                                             <strong>Information:</strong> Invalid email or password.
@@ -26,8 +26,7 @@
                                                         <b-input rounded type="password" v-model="password"></b-input>
                                                     </b-field>
                                                 </validation-provider>
-                                                <br/>
-                                                <b-button class="has-margin-top-100" type="is-primary" expanded rounded native-type="submit" :loading="isLoading">Login</b-button>
+                                                <b-button class="mt-4" type="is-primary" expanded rounded native-type="submit" :loading="isLoading">Login</b-button>
                                             </form>
                                         </validation-observer>
                                     </div>
@@ -48,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <footer class="footer volby-footer has-margin-top-15">
+        <footer class="footer volby-footer mt-1">
             <div class="columns is-vcentered has-text-centered">
                 <div class="column is-3">
                     <img class="image is-horizontal-center" width="50%" :src="require('../assets/img/credits_ipleiria.png')" />

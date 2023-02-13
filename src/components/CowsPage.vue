@@ -14,7 +14,7 @@
                     <template>
                         <div class="columns is-vcentered">
                             <div class="column is-12 has-text-right crud-button">
-                                <b-button class="has-margin-right-5" type="is-success" rounded tag="router-link" :to="'/auctions'">Buy</b-button>
+                                <b-button class="mr-2" type="is-success" rounded tag="router-link" :to="'/auctions'">Buy</b-button>
                                 <b-button icon-left="plus" type="is-dark" rounded tag="router-link" :to="'/newCow'">Create</b-button>
                             </div>
                         </div>
@@ -29,17 +29,17 @@
                     <template>
                         <div class="columns is-vcentered">
                             <div class="column is-12 has-text-right crud-button">
-                                <b-button class="has-margin-right-5" type="is-success" rounded tag="router-link" :to="'/auctions'">Buy</b-button>
+                                <b-button class="mr-2" type="is-success" rounded tag="router-link" :to="'/auctions'">Buy</b-button>
                                 <b-button icon-left="plus" type="is-dark" rounded tag="router-link" :to="'/newCow'">Create</b-button>
                             </div>
                         </div>
                     </template>
                     <div class="card box" v-for="cow in cows" :key="cow.id">
-                        <div class="card-content has-padding-top-0 has-padding-bottom-0">
+                        <div class="card-content pt-0 pb-0">
                             <div class="columns is-vcentered">
                                 <div class="column is-2">
                                     <figure class="image is-64x64 is-horizontal-center">
-                                        <img class="image is-rounded" :src="cow.imageCID == '' ? 'img/no_image.png' : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID" :title="cow.SerialNumber">
+                                        <img class="image is-rounded" :src="cow.imageCID == '' ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID" :title="cow.SerialNumber">
                                     </figure>
                                 </div>
                                 <div class="column is-2">

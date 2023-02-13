@@ -2,8 +2,8 @@
 	<div>
 		<div class="columns">
 			<div class="column">
-				<div class="card box shadow has-margin-bottom-40">
-					<div class="card-content has-padding-bottom-0">
+				<div class="card box shadow mb-3">
+					<div class="card-content mb-0">
 						<template v-if="isLoadingPanel">
 							<div class="columns is-centered">
 								<div class="column is-12 has-text-centered">
@@ -22,7 +22,7 @@
 											<div class="column is-12">
 												<figure class="image is-128x128 is-horizontal-center is-vcentered">
 													<img class="thumbnail image is-rounded"
-														:src="this.fileURL == '' || this.fileURL == null ? 'img/no_image.png' : this.fileURL">
+														:src="this.fileURL == '' || this.fileURL == null ? require('../assets/img/blank_cow_image.png') : this.fileURL">
 												</figure>
 												<b-field class="file is-dark" :class="{ 'has-name': !!file }">
 													<b-upload v-model="file"
@@ -58,7 +58,7 @@
 														:message="validationContext.errors[0]">
 														<template slot="label">Birth Date <span
 																class="has-text-danger">*</span></template>
-														<b-datetimepicker rounded v-model="cow.birthDate"
+														<b-datetimepicker v-model="cow.birthDate"
 															placeholder="Click to select..." 
 															:datepicker="{ showWeekNumber }" horizontal-time-picker>
 														</b-datetimepicker>
@@ -180,7 +180,7 @@
 										</b-field>
 									</b-tab-item>
 									<b-tab-item label="Genealogy">
-										<div class="columns has-margin-bottom-20">
+										<div class="columns mb-2">
 											<div class="column is-6">
 												<b-tag type="is-info">NOTE</b-tag> Define cow genealogy <b>to improve
 													history information</b>.

@@ -2,8 +2,8 @@
     <div>
         <div class="columns">
             <div class="column">
-                <div class="card box shadow has-margin-bottom-40">
-                    <div class="card-content has-padding-bottom-0">
+                <div class="card box shadow mb-3">
+                    <div class="card-content mb-0">
                         <template v-if="isLoadingPanel">
                             <div class="columns is-centered">
                                 <div class="column is-12 has-text-centered">
@@ -72,7 +72,7 @@
                                                             :message="validationContext.errors[0]">
                                                             <template slot="label">Appointment Date <span
                                                                     class="has-text-danger">*</span></template>
-                                                            <b-datetimepicker rounded v-model="appointmentDate"
+                                                            <b-datetimepicker v-model="appointmentDate"
                                                                 placeholder="Click to select..." 
                                                                 :datepicker="{ showWeekNumber }" :min-datetime="dateNow"
                                                                 :timepicker="{ enableSeconds, hourFormat: format }"
@@ -86,7 +86,7 @@
                                                 <div class="column is-6">
                                                     <validation-provider rules="required" name="User"
                                                         v-slot="validationContext">
-                                                        <b-field rounded label="User"
+                                                        <b-field label="User"
                                                             :type="getValidationState(validationContext)"
                                                             :message="validationContext.errors[0]">
                                                             <b-select v-model="idUserRequest"

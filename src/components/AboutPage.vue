@@ -1,19 +1,19 @@
 <template>
-    <div class="section has-padding-top-10">
+    <div class="section pt-1">
         <div class="container">
             <div class="columns is-centered is-full-height is-vcentered">
-                <div class="column is-half has-text-centered has-padding-top-0">
+                <div class="column is-half has-text-centered pt-0">
                     <img class="image is-256x256 is-horizontal-center" :src="require('../assets/img/icon.png')"/>
                     <h1 id="home_title">COW</h1>
                     <h4 id="home_subtitle">About</h4>
-                    <div class="columns has-margin-top-10">
-                        <p class="has-text-centered">COW is a blockchain project created for the thesis of the Master in Computer Engineering-Mobile Computing at the Polytechnic of Leiria. The goal with this project is to make an open source platform and to show new blockhain solutions for tracking cattle and to smooth the management of complex supply chains.</p>
+                    <div class="columns mt-1">
+                        <p class="has-text-centered">COW is a DLT project created for the thesis of the Master in Computer Engineering-Mobile Computing at the Polytechnic of Leiria. The goal is to create a open source plataform, enabling tracking cattele and allow management complex supply chains with multiple stakeholders.</p>
                     </div>
-                    <div class="has-margin-top-30">
+                    <div class="mt-3">
                         <h4 id="home_subtitle">Contribuitions</h4>
-                        <div class="columns has-margin-top-10 has-text-centered">
+                        <div class="columns mt-1 has-text-centered">
                             <div class="column is-12">
-                                <p>Want to be part of this project? Check out our <a href="https://github.com/bernardo-figueiredo/COW.API" target="_blank">repository at GitHub.</a></p>
+                                <p>Want to be part of this project? Check out our <a href="https://github.com/bernardo-figueiredo/cow-api" target="_blank">repository at GitHub.</a></p>
                             </div>
                         </div>
                         <div class="columns">
@@ -30,7 +30,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="has-margin-top-30">
+                    <div class="mt-3">
                         <div class="columns">
                             <div class="column">
                                 <p>Current Supervisors:</p>
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="has-margin-top-30">
+                    <div class="mt-3">
                         <h4 id="home_subtitle">In Association With</h4>
                         <div class="columns">
                             <img class="image is-horizontal-center" width="50%" :src="require('../assets/img/credits_ipleiria.png')" />

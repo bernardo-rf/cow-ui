@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import {store} from '../store.js'
 import { isAfter } from "date-fns"
 
-import NotFound from "../components/HomePage.vue";
+import NotFound from "../components/NotFound.vue";
 import Home from "../components/HomePage.vue";
 import Login from "../components/LoginPage.vue";
 import Register from "../components/RegisterPage.vue";

@@ -2,8 +2,8 @@
     <div>
         <div class="columns">
             <div class="column">
-                <div class="card box shadow has-margin-bottom-40">
-                    <div class="card-content has-padding-bottom-0">
+                <div class="card box shadow mb-3">
+                    <div class="card-content mb-0">
                         <template v-if="isLoadingPanel">
                             <div class="columns is-centered">
                                 <div class="column is-12 has-text-centered">
@@ -43,7 +43,7 @@
                                                         :message="validationContext.errors[0]">
                                                         <template slot="label">Start Date <span
                                                                 class="has-text-danger">*</span></template>
-                                                        <b-datetimepicker rounded v-model="startDate"
+                                                        <b-datetimepicker v-model="startDate"
                                                             placeholder="Click to select..." 
                                                             :datepicker="{ showWeekNumber }"
                                                             :timepicker="{ enableSeconds, hourFormat: format }"
@@ -60,7 +60,7 @@
                                                         :message="validationContext.errors[0]">
                                                         <template slot="label">End Date <span
                                                                 class="has-text-danger">*</span></template>
-                                                        <b-datetimepicker rounded v-model="endDate"
+                                                        <b-datetimepicker v-model="endDate"
                                                             placeholder="Click to select..." 
                                                             :datepicker="{ showWeekNumber }"
                                                             :timepicker="{ enableSeconds, hourFormat: format }"
