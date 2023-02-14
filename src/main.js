@@ -84,6 +84,9 @@ Vue.use(Buefy, {
   defaultIconPack: "fas",
 });
 
+import VueTimeline from "@growthbunker/vuetimeline";
+Vue.use(VueTimeline, {theme: "light",});
+
 Vue.config.productionTip = false;
 
 const app = new Vue({

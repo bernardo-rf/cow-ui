@@ -13,5 +13,4 @@ export default {
 
 <style lang="scss">
    @import './css/main.scss';
-   @import '../node_modules/timeline-vuejs/dist/timeline-vuejs.css';
 </style>

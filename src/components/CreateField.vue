@@ -146,23 +146,29 @@
                                                 aria-next-label="Next page" aria-previous-label="Previous page"
                                                 aria-page-label="Page" aria-current-label="Current page">
 
-                                                <template slot-scope="props">
                                                     <b-table-column field="serialNumber" label="Serial Number" sortable>
-                                                        {{ props.row.serialNumber }}
+                                                        <template v-slot:default="props">
+                                                            {{ props.row.serialNumber }}
+                                                        </template>
                                                     </b-table-column>
                                                     <b-table-column field="color" label="Color" sortable>
-                                                        {{ props.row.color }}
+                                                        <template v-slot:default="props">
+                                                            {{ props.row.color }}
+                                                        </template>
                                                     </b-table-column>
                                                     <b-table-column field="breed" label="Breed" sortable>
-                                                        {{ props.row.color }}
+                                                        <template v-slot:default="props">
+                                                            {{ props.row.color }}
+                                                        </template>
                                                     </b-table-column>
                                                     <b-table-column field="gender" label="Gender" sortable>
-                                                        <b-icon pack="fas"
-                                                            :icon="props.row.gender == '1' ? 'mars' : 'venus'">
-                                                        </b-icon>
-                                                        {{ props.row.gender == '1' ? 'Masculine' : 'Feminine' }}
+                                                        <template v-slot:default="props">
+                                                            <b-icon pack="fas"
+                                                                :icon="props.row.gender == '1' ? 'mars' : 'venus'">
+                                                            </b-icon>
+                                                            {{ props.row.gender == '1' ? 'Masculine' : 'Feminine' }}
+                                                        </template>
                                                     </b-table-column>
-                                                </template>
                                             </b-table>
                                         </div>
                                         <hr />
@@ -219,12 +225,12 @@ export default {
             title: "New Field",
             isLoadingPanel: true,
             activeTab: 0,
-            description: "My Field",
-            address: "",
+            description: "Field Description",
+            address: "Field Address",
             observation: "",
             limit: 50,
-            latitude: 0.0,
-            longitude: 0.0,
+            latitude: 39.74362,
+            longitude: -8.80705,
             active: true,
             checkedCows: [],
             cows: [],

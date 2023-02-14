@@ -56,12 +56,12 @@
                                                     <div class="columns">
                                                         <div class="column is-4">
                                                             <span class="has-text-weight-bold">Color: </span> {{
-                                                                    cow.color
+                                                                cow.color
                                                             }}
                                                         </div>
                                                         <div class="column is-4">
                                                             <span class="has-text-weight-bold">Breed: </span> {{
-                                                                    cow.breed
+                                                                cow.breed
                                                             }}
                                                         </div>
                                                         <div class="column is-4">
@@ -125,7 +125,8 @@
                                         <br />
                                         <div class="columns is-centered">
                                             <div class="column is-12 has-text-centered">
-                                                <span class="has-text-weight-bold"> Cow {{ cow.serialNumber }} don't have any 
+                                                <span class="has-text-weight-bold"> Cow {{ cow.serialNumber }} don't
+                                                    have any
                                                     relatives registered. </span>
                                             </div>
                                         </div>
@@ -141,68 +142,32 @@
                                     </b-field>
                                 </b-tab-item>
                                 <b-tab-item label="Appointments History">
-                                    <template v-if="appointments.length != 0">
-                                        <div class="timeline" data-mode="vertical" data-vertical-trigger="150px">
-                                            <div class="timeline__wrap">
-                                                <div class="timeline__items">
-                                                    <div class="timeline__item" v-for="appointment in appointments"
-                                                        :key="appointment.id">
-                                                        <div class="timeline__content">
-                                                            <div class="columns">
-                                                                <div class="column is-9">
-                                                                    <div
-                                                                        v-if="appointment.idAppointment == appointments[0].idAppointment">
-                                                                        <h2 class="has-text-weight-bold">Latest
-                                                                            Appointment: </h2>
-                                                                    </div>
-                                                                    <div v-else>
-                                                                        <h2 class="has-text-weight-bold">Appointment No:
-                                                                            {{ indexOf(appointment.idAppointment) }}
-                                                                        </h2>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="column is-2">
-                                                                    <b-tag size="medium" class="has-text-weight-bold">
-                                                                        {{ appointment.appointmentDate }}</b-tag>
-                                                                </div>
-                                                            </div>
-                                                            <div class="columns">
-                                                                <div class="column is-6">
-                                                                    <span class="has-text-weight-bold">Motive: </span>
-                                                                    {{ appointment.appointmentType }}
-                                                                </div>
-                                                                <div class="column is-6">
-                                                                    <span class="has-text-weight-bold">Cost: </span>
-                                                                    {{ appointment.cost }}€
-                                                                </div>
-                                                            </div>
-                                                            <div class="columns">
-                                                                <div class="column is-12">
-                                                                    <span class="has-text-weight-bold">Observation:
-                                                                    </span> {{ appointment.observation }}
-                                                                </div>
-                                                            </div>
-                                                            <hr />
-                                                            <b-button tag="router-link"
-                                                                :to="'/appointment/' + appointment.idAppointment"
-                                                                type="is-dark" icon-left="stethoscope" expanded>Open
-                                                            </b-button>
+                                    <div class="pb-2">
+                                        <template v-if="appointments.length != 0">
+                                            <template>
+                                                <div class="card">
+                                                    <div class="card-content">
+                                                        <div v-for="appointment in appointments" :key="appointment.id">
+                                                            <vue-timeline-update :date="appointment.datePast"
+                                                                :title="appointment.title"
+                                                                :description="appointment.descriptionTimeline"
+                                                                category="Appointment" icon="code" color="green" />
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </template>
+                                        </template>
+                                        <template v-else>
+                                            <br />
+                                            <div class="columns is-centered">
+                                                <div class="column is-12 has-text-centered">
+                                                    <span class="has-text-weight-bold"> Cow {{ cow.serialNumber }} don't
+                                                        have
+                                                        any appointments registered. </span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </template>
-                                    <template v-else>
-                                        <br />
-                                        <div class="columns is-centered">
-                                            <div class="column is-12 has-text-centered">
-                                                <span class="has-text-weight-bold"> Cow {{ cow.serialNumber }} don't
-                                                    have
-                                                    any appointments registered. </span>
-                                            </div>
-                                        </div>
-                                    </template>
+                                        </template>
+                                    </div>
                                     <b-field class="is-pulled-left">
                                         <b-button rounded @click="prevTab()" icon-left="arrow-left">Previous</b-button>
                                     </b-field>
@@ -212,54 +177,18 @@
                                 </b-tab-item>
                                 <b-tab-item label="Relocation History">
                                     <template v-if="fieldsHistory.length != 0">
-                                        <div class="timeline" data-mode="vertical">
-                                            <div class="timeline__wrap">
-                                                <div class="timeline__items">
-                                                    <div class="timeline__item" v-for="history in fieldsHistory"
-                                                        :key="history.id">
-                                                        <div class="timeline__content">
-                                                            <div class="columns">
-                                                                <div class="column is-9">
-                                                                    <div
-                                                                        v-if="history.idFieldHistory == fieldsHistory[0].idFieldHistory">
-                                                                        <h2 class="has-text-weight-bold">Latest
-                                                                            Relocation: </h2>
-                                                                    </div>
-                                                                    <div v-else>
-                                                                        <h2 class="has-text-weight-bold">Relocation No:
-                                                                            {{ indexOfRelocation(history.idFieldHistory)
-                                                                            }}
-                                                                        </h2>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="column is-2">
-                                                                    <b-tag size="medium" class="has-text-weight-bold">
-                                                                        {{ history.switchDate }}</b-tag>
-                                                                </div>
-                                                            </div>
-                                                            <div class="columns">
-                                                                <div class="column is-12">
-                                                                    <span class="has-text-weight-bold"> Field
-                                                                        Description: </span>
-                                                                    {{ history.fieldDescription }}
-                                                                </div>
-                                                            </div>
-                                                            <div class="columns">
-                                                                <div class="column is-12">
-                                                                    <span class="has-text-weight-bold"> Field Address:
-                                                                    </span> {{ history.fieldAddress }}
-                                                                </div>
-                                                            </div>
-                                                            <hr />
-                                                            <b-button tag="router-link"
-                                                                :to="'/fieldsHistory/' + history.idFieldHistory"
-                                                                type="is-dark" icon-left="arrow-right" expanded>Open
-                                                            </b-button>
-                                                        </div>
+                                        <template>
+                                            <div class="card">
+                                                <div class="card-content">
+                                                    <div v-for="history in fieldsHistory" :key="history.id">
+                                                        <vue-timeline-update :date="history.datePast"
+                                                            :title="history.title"
+                                                            :description="history.descriptionTimeline"
+                                                            category="Relocation" icon="code" color="black" />
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </template>
                                     </template>
                                     <template v-else>
                                         <br />
@@ -303,9 +232,8 @@
 </template>
 
 <script>
-import { toDateTime } from '../helpers.js'
+import { toDateTime, toNewDate } from '../helpers.js'
 import OrgChart from '@balkangraph/orgchart.js'
-// import Timeline from 'timeline-vuejs'
 
 export default {
     data() {
@@ -344,13 +272,24 @@ export default {
                             this.appointments = response.data
                             this.appointments.forEach(appointment => {
                                 appointment.appointmentDate = toDateTime(appointment.appointmentDate)
+                                appointment.datePast = toNewDate(appointment.appointmentDate)
+                                appointment.title = this.indexOf(appointment.idAppointment) + "º- Motive: " + appointment.appointmentType
+                                appointment.descriptionTimeline = "<strong>Appointment</strong> cost: " + appointment.cost + "€"
+                                
+                                if(appointment.observation != ""){
+                                    appointment.descriptionTimeline += "with the following observation" + appointment.observation + "."
+                                }
                             })
 
                             axios.get(`http://${process.env.VUE_APP_API_URL}historyFields/${this.cowId}`)  // eslint-disable-line
                                 .then(response => {
                                     this.fieldsHistory = response.data
+
                                     this.fieldsHistory.forEach(history => {
                                         history.switchDate = toDateTime(history.switchDate)
+                                        history.datePast = new Date(history.switchDate.split(" ")[0])
+                                        history.title = this.indexOfRelocation(history.idFieldHistory) + "º- Field: " + history.fieldDescription
+                                        history.descriptionTimeline = "<strong>Cow</strong> with serial nº" + history.bovineSerialNumber + " move to field <strong>'" + history.fieldDescription + "'</strong> with the address <strong>'" + history.fieldAddress + "'</strong>."
                                     })
 
                                     axios.get(`http://${process.env.VUE_APP_API_URL}bovines/genealogy/${this.cowId}`) // eslint-disable-line
@@ -515,7 +454,6 @@ export default {
     },
     updated() {
         this.getTree();
-        // Timeline(document.querySelectorAll('.timeline'));
     }
 }
 </script>
