@@ -6,13 +6,13 @@
                     <div class="column has-text-centered pt-4">
                         <img class="image is-128x128 is-horizontal-center" :src="require('../assets/img/icon.png')"/>
                         <h1 id="home_title">COW</h1>
-                        <h4 id="home_subtitle">Register</h4>
+                        <h4 id="home_subtitle">Sign Up</h4>
                         <div class="columns is-centered">
                             <div class="column is-5">
                                 <div class="card box shadow pt-0 pl-0 pr-0 pb-0">
                                     <div class="card-content">
                                         <b-message v-show="isEmailNotUnique" type="is-warning">
-                                            <strong>Information:</strong> The email is already taken. Please, choose another one.
+                                            <strong>Information:</strong> The email is already assign in our plataform.
                                         </b-message>
                                         <validation-observer ref="observer" v-slot="{handleSubmit}">
                                             <form @submit.prevent="handleSubmit(submit)">
@@ -26,7 +26,7 @@
                                                         <b-input rounded v-model="email"></b-input>
                                                     </b-field>
                                                 </validation-provider>
-                                                <validation-provider vid="password" rules="required|capitalLetter|oneNumber|min:6|max:30" name="Password" v-slot="validationContext">
+                                                <validation-provider vid="password" rules="required|capitalLetter|oneNumber|min:8|max:30" name="Password" v-slot="validationContext">
                                                     <b-field label="Password" :type="getValidationState(validationContext)" :message="validationContext.errors[0]">
                                                         <b-input rounded type="password" v-model="password" password-reveal></b-input>
                                                     </b-field>
@@ -45,7 +45,7 @@
                                                         </b-select>
                                                     </b-field>
                                                 </validation-provider>
-                                                <b-button class="mt-3" type="is-primary" expanded rounded native-type="submit" :loading="isLoading">Register</b-button>
+                                                <b-button class="mt-3" type="is-primary" expanded rounded native-type="submit" :loading="isLoading">Sign Up</b-button>
                                             </form>
                                         </validation-observer>
                                     </div>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="columns">
                             <div class="column">
-                                <b-button type="is-text" tag="router-link" to="/login">Already have an account? Login</b-button>
+                                <b-button type="is-text" tag="router-link" to="/login">Already have an account? Sign In.</b-button>
                             </div>
                         </div>
                         <div class="columns">
@@ -129,7 +129,7 @@ export default{
     },
     methods: {
         getInformation(){
-            axios.get(`http://${process.env.VUE_APP_API_URL}userTypes/`)  // eslint-disable-line
+            axios.get(`${process.env.VUE_APP_API_URL}userTypes/`)  // eslint-disable-line
                 .then(response => {
                     this.userTypes = response.data
                     this.isLoading = false
@@ -146,7 +146,7 @@ export default{
             this.isEmailNotUnique = false
             this.isLoading = true
             
-            axios.post(`http://${process.env.VUE_APP_API_URL}users/`,{  // eslint-disable-line
+            axios.post(`${process.env.VUE_APP_API_URL}users/`,{  // eslint-disable-line
                 idUserType: this.userType,
                 name: this.name,
                 email: this.email,

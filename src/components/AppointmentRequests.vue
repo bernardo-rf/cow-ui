@@ -148,9 +148,9 @@ export default {
         getAppointmentRequests() {
             var url = ""
             if (this.$parent.user.type == 'VETERINARY') {
-                url = `http://${process.env.VUE_APP_API_URL}appointmentRequest/user/`
+                url = `${process.env.VUE_APP_API_URL}appointmentRequest/user/`
             } else {
-                url = `http://${process.env.VUE_APP_API_URL}appointmentRequest/userRequest/`
+                url = `${process.env.VUE_APP_API_URL}appointmentRequest/userRequest/`
             }
 
             axios.get(url + this.$parent.user.idUser) // eslint-disable-line
@@ -178,7 +178,7 @@ export default {
                 indefinite: true
             })
 
-            axios.put(`http://${process.env.VUE_APP_API_URL}appointmentRequest/${id}/status?status=${status}`) // eslint-disable-line
+            axios.put(`${process.env.VUE_APP_API_URL}appointmentRequest/${id}/status?status=${status}`) // eslint-disable-line
                 .then(() => {
                     this.getAppointmentRequests()
                 })

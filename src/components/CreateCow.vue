@@ -345,7 +345,7 @@ export default {
 			return dirty || validated ? (valid ? "" : "is-danger") : "";
 		},
 		getInformation() {
-			axios.get(`http://${process.env.VUE_APP_API_URL}bovines/${this.$parent.user.idWallet}/own`)  // eslint-disable-line
+			axios.get(`${process.env.VUE_APP_API_URL}bovines/${this.$parent.user.idWallet}/own`)  // eslint-disable-line
 				.then(response => {
 					this.cows = response.data
 					this.cows.forEach(cow => {
@@ -358,7 +358,7 @@ export default {
 						}
 					})
 
-					axios.get(`http://${process.env.VUE_APP_API_URL}fields/${this.$parent.user.idWallet}/not_occupied`)  // eslint-disable-line
+					axios.get(`${process.env.VUE_APP_API_URL}fields/${this.$parent.user.idWallet}/not_occupied`)  // eslint-disable-line
 						.then(response => {
 							this.fields = response.data
 							this.isLoadingPanel = false
@@ -378,7 +378,7 @@ export default {
 				})
 		},
 		createRequest(imageCID) {
-			axios.post(`http://${process.env.VUE_APP_API_URL}bovines/`, {  // eslint-disable-line
+			axios.post(`${process.env.VUE_APP_API_URL}bovines/`, {  // eslint-disable-line
 				"idOwner": this.$parent.user.idWallet,
 				"idField": this.idField,
 				"serialNumber": this.serialNumber,

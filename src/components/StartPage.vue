@@ -127,7 +127,7 @@ export default {
     },
     methods: {
         getInformation() {
-            axios.get(`http://${process.env.VUE_APP_API_URL}bovines/${this.$parent.user.idWallet}/own`) // eslint-disable-line
+            axios.get(`${process.env.VUE_APP_API_URL}bovines/${this.$parent.user.idWallet}/own`) // eslint-disable-line
                 .then(response => {
                     this.cows = response.data
 
@@ -150,9 +150,9 @@ export default {
 
                     var url = ""
                     if (this.$parent.user.type == 'VETERINARY') {
-                        url = `http://${process.env.VUE_APP_API_URL}appointment/user/${this.$parent.user.idUser}`
+                        url = `${process.env.VUE_APP_API_URL}appointment/user/${this.$parent.user.idUser}`
                     } else {
-                        url = `http://${process.env.VUE_APP_API_URL}appointment/bovines/${this.$parent.user.idWallet}`
+                        url = `${process.env.VUE_APP_API_URL}appointment/bovines/${this.$parent.user.idWallet}`
                     }
                     axios.get(url) // eslint-disable-line
                         .then(response => {
@@ -186,7 +186,7 @@ export default {
 
                             this.appointmentsColors.splice(0, this.appointmentsColors.length - this.appointmentsLabels.length)
 
-                            axios.get(`http://${process.env.VUE_APP_API_URL}auctions/`) // eslint-disable-line
+                            axios.get(`${process.env.VUE_APP_API_URL}auctions/`) // eslint-disable-line
                                 .then(response => {
                                     var auctions = response.data
                                     auctions.forEach(auction => {

@@ -174,7 +174,7 @@ export default {
     },
     methods: {
         getAuctions() {
-            axios.get(`http://${process.env.VUE_APP_API_URL}auctions/`)  // eslint-disable-line
+            axios.get(`${process.env.VUE_APP_API_URL}auctions/`)  // eslint-disable-line
                 .then(response => {
                     if (this.isUpdatingStatus) {
                         this.isLoading = true
@@ -231,7 +231,7 @@ export default {
             })
 
             this.status = 2
-            axios.put(`http://${process.env.VUE_APP_API_URL}auctions/${idAuction}/status?status=${this.status}`)  // eslint-disable-line
+            axios.put(`${process.env.VUE_APP_API_URL}auctions/${idAuction}/status?status=${this.status}`)  // eslint-disable-line
                 .then(() => {
                     this.getAuctions()
                 })
@@ -251,7 +251,7 @@ export default {
             })
 
             this.status = 1
-            axios.put(`http://${process.env.VUE_APP_API_URL}auctions/${idAuction}/status?status=${this.status}`)  // eslint-disable-line
+            axios.put(`${process.env.VUE_APP_API_URL}auctions/${idAuction}/status?status=${this.status}`)  // eslint-disable-line
                 .then(() => {
                     this.getAuctions()
                 })

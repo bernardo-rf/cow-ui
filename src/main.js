@@ -115,7 +115,7 @@ window.axios.interceptors.response.use(
     switch (error.response.status) {
       case 401:
         if (
-          error.config.url != `http://${process.env.VUE_APP_API_URL}users/auth/`
+          error.config.url != `${process.env.VUE_APP_API_URL}users/auth/`
         ) {
           app.$store.commit("logout");
           app.$router.push("/login");

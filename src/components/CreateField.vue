@@ -253,7 +253,7 @@ export default {
             return dirty || validated ? (valid ? "" : "is-danger") : "";
         },
         getCows() {
-            axios.get(`http://${process.env.VUE_APP_API_URL}bovines/${this.$parent.user.idWallet}/own`)  // eslint-disable-line
+            axios.get(`${process.env.VUE_APP_API_URL}bovines/${this.$parent.user.idWallet}/own`)  // eslint-disable-line
                 .then(response => {
                     this.cows = response.data
                     this.isLoadingPanel = false
@@ -293,7 +293,7 @@ export default {
                         return
                     }
 
-                    axios.post(`http://${process.env.VUE_APP_API_URL}fields/`, {  // eslint-disable-line
+                    axios.post(`${process.env.VUE_APP_API_URL}fields/`, {  // eslint-disable-line
                         "idOwner": this.$parent.user.idWallet,
                         "fieldDescription": this.description,
                         "address": this.address,

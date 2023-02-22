@@ -174,7 +174,7 @@ export default {
             return dirty || validated ? (valid ? "" : "is-danger") : "";
         },
         getCows() {
-            axios.get(`http://${process.env.VUE_APP_API_URL}bovines/${this.$parent.user.idWallet}/own/auction`)  // eslint-disable-line
+            axios.get(`${process.env.VUE_APP_API_URL}bovines/${this.$parent.user.idWallet}/own/auction`)  // eslint-disable-line
                 .then(response => {
                     this.cows = response.data
                     this.dateNow = new Date(new Date().getTime() + 10*60000)
@@ -225,7 +225,7 @@ export default {
                         this.status = 0
                     }
 
-                    axios.post(`http://${process.env.VUE_APP_API_URL}auctions/`, {  // eslint-disable-line
+                    axios.post(`${process.env.VUE_APP_API_URL}auctions/`, {  // eslint-disable-line
                         "idBovine": this.idBovine,
                         "idOwner": this.$parent.user.idWallet,
                         "auctionDescription": this.auctionDescription,

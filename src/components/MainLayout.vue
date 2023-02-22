@@ -8,7 +8,7 @@
             </template>
             <template slot="start">
                 <b-navbar-item tag="router-link" to="/start">
-                    Start
+                    Dashboard
                 </b-navbar-item>
                 <template v-if="user.type != 'VETERINARY'">
                     <b-navbar-dropdown label="Auctions" type="is-dark">
@@ -55,8 +55,8 @@
             </template>
 
             <template slot="end">
-                <figure class="image is-32x32">
-                    <img class="image is-rounded"
+                <figure class="image is-64x64 is-horizontal-center is-vcentered">
+                    <img class="thumbnail-layout image is-rounded"
                         :src="this.fileURL == '' || this.fileURL == null ? require('../assets/img/blank_user_image.png') : this.fileURL">
                 </figure>
                 <b-navbar-dropdown>

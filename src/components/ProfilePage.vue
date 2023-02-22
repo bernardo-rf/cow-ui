@@ -139,13 +139,13 @@
                                             <b-field label="User Type">
                                                 <b-message type="is-dark" class="shadow">
                                                     <div class="columns">
-                                                        <div class="column is-1">
-                                                            <b-icon class="title"
+                                                        <div class="column is-2">
+                                                            <b-icon class="title mr-1"
                                                                 :icon="user.type == 'FARMER' ? 'fa-tractor' : user.type == 'VETERINARY' ? 'fa-paw' : 'fa-money-bill-transfer'"
                                                                 size="is-medium">
                                                             </b-icon>
                                                         </div>
-                                                        <div class="column">
+                                                        <div class="column is-9">
                                                             <h4 class="title is-4">{{ user.type }}</h4>
                                                         </div>
                                                     </div>
@@ -338,7 +338,7 @@ export default {
             return dirty || validated ? (valid ? "" : "is-danger") : "";
         },
         getInformation() {
-            axios.get(`http://${process.env.VUE_APP_API_URL}users/${this.$parent.user.idUser}`)  // eslint-disable-line
+            axios.get(`${process.env.VUE_APP_API_URL}users/${this.$parent.user.idUser}`)  // eslint-disable-line
                 .then(response => {
                     this.user = response.data
 
@@ -366,7 +366,7 @@ export default {
             this.isUpdatePassword = !this.isUpdatePassword
         },
         updateUser(imageCID) {
-            axios.put(`http://${process.env.VUE_APP_API_URL}users/${this.user.idWallet}`, {  // eslint-disable-line
+            axios.put(`${process.env.VUE_APP_API_URL}users/${this.user.idWallet}`, {  // eslint-disable-line
                 "idUser": this.user.idUser,
                 "idContract": this.user.idContract,
                 "idWallet": this.user.idWallet,
@@ -381,7 +381,7 @@ export default {
                 "imageCID": imageCID
             })
                 .then(() => {
-                    axios.get(`http://${process.env.VUE_APP_API_URL}users/${this.$parent.user.idUser}`)  // eslint-disable-line
+                    axios.get(`${process.env.VUE_APP_API_URL}users/${this.$parent.user.idUser}`)  // eslint-disable-line
                         .then(response => {
                             this.$store.commit("setUser", response.data)
 
@@ -452,12 +452,12 @@ export default {
                         data.append('pinataOptions', '{"cidVersion": 1}');
                         data.append('pinataMetadata', '{"name": "' + this.file.name + '"}');
 
-                        var token = `${process.env.VUE_APP_PINATA_API_KEY}`
+                        var token = `Bearer ${process.env.VUE_APP_PINATA_API_KEY}`
                         var config = {
                             method: 'post',
                             url: 'https://api.pinata.cloud/pinning/pinFileToIPFS',
                             headers: {
-                                'Authorization': token
+                                'Authorization': token,
                             },
                             data: data
                         };

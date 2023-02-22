@@ -262,12 +262,12 @@ export default {
             this.activeTab++
         },
         getCow() {
-            axios.get(`http://${process.env.VUE_APP_API_URL}bovines/${this.cowId}`)  // eslint-disable-line
+            axios.get(`${process.env.VUE_APP_API_URL}bovines/${this.cowId}`)  // eslint-disable-line
                 .then(response => {
                     this.cow = response.data
                     this.cow.birthDate = toDateTime(this.cow.birthDate)
 
-                    axios.get(`http://${process.env.VUE_APP_API_URL}appointment/bovine/${this.cowId}`)  // eslint-disable-line
+                    axios.get(`${process.env.VUE_APP_API_URL}appointment/bovine/${this.cowId}`)  // eslint-disable-line
                         .then(response => {
                             this.appointments = response.data
                             this.appointments.forEach(appointment => {
@@ -281,7 +281,7 @@ export default {
                                 }
                             })
 
-                            axios.get(`http://${process.env.VUE_APP_API_URL}historyFields/${this.cowId}`)  // eslint-disable-line
+                            axios.get(`${process.env.VUE_APP_API_URL}historyFields/${this.cowId}`)  // eslint-disable-line
                                 .then(response => {
                                     this.fieldsHistory = response.data
 
@@ -292,7 +292,7 @@ export default {
                                         history.descriptionTimeline = "<strong>Cow</strong> with serial nº" + history.bovineSerialNumber + " move to field <strong>'" + history.fieldDescription + "'</strong> with the address <strong>'" + history.fieldAddress + "'</strong>."
                                     })
 
-                                    axios.get(`http://${process.env.VUE_APP_API_URL}bovines/genealogy/${this.cowId}`) // eslint-disable-line
+                                    axios.get(`${process.env.VUE_APP_API_URL}bovines/genealogy/${this.cowId}`) // eslint-disable-line
                                         .then(response => {
                                             this.genealogy = response.data
 
