@@ -209,7 +209,7 @@ export default {
             return dirty || validated ? (valid ? "" : "is-danger") : "";
         },
         getAppointmentRequests() {
-            axios.get(`http://${process.env.VUE_APP_API_URL}bovines/${this.$parent.user.idWallet}/own`)  // eslint-disable-line
+            axios.get(`${process.env.VUE_APP_API_URL}bovines/${this.$parent.user.idWallet}/own`)  // eslint-disable-line
                 .then(response => {
                     this.cows = response.data
 
@@ -220,7 +220,7 @@ export default {
                         })
                     }
 
-                    axios.get(`http://${process.env.VUE_APP_API_URL}users/`)  // eslint-disable-line
+                    axios.get(`${process.env.VUE_APP_API_URL}users/`)  // eslint-disable-line
                         .then(response => {
                             const usersAux = response.data
                             usersAux.forEach(user => {
@@ -291,7 +291,7 @@ export default {
                         bovines.push(bovine.idBovine)
                     })
 
-                    axios.post(`http://${process.env.VUE_APP_API_URL}appointmentRequest/`, {  // eslint-disable-line
+                    axios.post(`${process.env.VUE_APP_API_URL}appointmentRequest/`, {  // eslint-disable-line
                         "idUser": this.idUser,
                         "idUserRequest": this.idUserRequest,
                         "appointmentDate": this.appointmentDate,

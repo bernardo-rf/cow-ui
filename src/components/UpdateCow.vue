@@ -321,7 +321,7 @@ export default {
 			return dirty || validated ? (valid ? "" : "is-danger") : "";
 		},
 		getInformation() {
-			axios.get(`http://${process.env.VUE_APP_API_URL}bovines/${this.$route.params.bovineId}`) // eslint-disable-line
+			axios.get(`${process.env.VUE_APP_API_URL}bovines/${this.$route.params.bovineId}`) // eslint-disable-line
 				.then(response => {
 					this.cow = response.data
 					this.cow.birthDate = new Date(this.cow.birthDate)
@@ -331,7 +331,7 @@ export default {
 						this.fileURL = 'https://gateway.pinata.cloud/ipfs/' + this.cow.imageCID
 					}
 
-					axios.get(`http://${process.env.VUE_APP_API_URL}bovines/${this.$parent.user.idWallet}/own`) // eslint-disable-line
+					axios.get(`${process.env.VUE_APP_API_URL}bovines/${this.$parent.user.idWallet}/own`) // eslint-disable-line
 						.then(response => {
 							this.cows = response.data
 							this.cows.forEach(cow => {
@@ -344,7 +344,7 @@ export default {
 								}
 							})
 
-							axios.get(`http://${process.env.VUE_APP_API_URL}fields/${this.$parent.user.idWallet}/not_occupied`) // eslint-disable-line
+							axios.get(`${process.env.VUE_APP_API_URL}fields/${this.$parent.user.idWallet}/not_occupied`) // eslint-disable-line
 								.then(response => {
 									this.fields = response.data
 									this.isLoadingPanel = false
@@ -371,7 +371,7 @@ export default {
 				})
 		},
 		updateRequest(imageCID) {
-			axios.put(`http://${process.env.VUE_APP_API_URL}bovines/${this.$route.params.bovineId}`, { // eslint-disable-line
+			axios.put(`${process.env.VUE_APP_API_URL}bovines/${this.$route.params.bovineId}`, { // eslint-disable-line
 				"idOwner": this.$parent.user.idWallet,
 				"idContract": this.cow.idContract,
 				"idBovine": this.cow.idBovine,

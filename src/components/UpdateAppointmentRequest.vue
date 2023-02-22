@@ -183,17 +183,17 @@ export default {
             return dirty || validated ? (valid ? "" : "is-danger") : "";
         },
         getAppointmentRequest() {
-            axios.get(`http://${process.env.VUE_APP_API_URL}appointmentRequest/` + this.$route.params.AppointmentRequestId) // eslint-disable-line
+            axios.get(`${process.env.VUE_APP_API_URL}appointmentRequest/` + this.$route.params.AppointmentRequestId) // eslint-disable-line
                 .then(response => {
                     this.appointmentRequest = response.data
 
                     this.appointmentRequest.appointmentDate = new Date(this.appointmentRequest.appointmentDate)
 
-                    axios.get(`http://${process.env.VUE_APP_API_URL}bovines/${this.appointmentRequest.idBovine}`) // eslint-disable-line
+                    axios.get(`${process.env.VUE_APP_API_URL}bovines/${this.appointmentRequest.idBovine}`) // eslint-disable-line
                         .then(response => {
                             this.cow = response.data
 
-                            axios.get(`http://${process.env.VUE_APP_API_URL}users/veterinary`) // eslint-disable-line
+                            axios.get(`${process.env.VUE_APP_API_URL}users/veterinary`) // eslint-disable-line
                                 .then(response => {
                                     this.veterinaries = response.data
                                     this.isLoadingPanel = false
@@ -240,7 +240,7 @@ export default {
                         return
                     }
 
-                    axios.put(`http://${process.env.VUE_APP_API_URL}appointmentRequest/${this.$route.params.AppointmentRequestId}`, { // eslint-disable-line
+                    axios.put(`${process.env.VUE_APP_API_URL}appointmentRequest/${this.$route.params.AppointmentRequestId}`, { // eslint-disable-line
                         "idAppointmentRequest": this.$route.params.AppointmentRequestId,
                         "idUser": this.appointmentRequest.idUser,
                         "idUserRequest": this.appointmentRequest.idUserRequest,

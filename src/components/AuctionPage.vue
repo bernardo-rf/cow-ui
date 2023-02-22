@@ -307,7 +307,7 @@ export default {
             return dirty || validated ? (valid ? "" : "is-danger") : "";
         },
         getInformation() {
-            axios.get(`http://${process.env.VUE_APP_API_URL}auctions/${this.auctionId}`) // eslint-disable-line
+            axios.get(`${process.env.VUE_APP_API_URL}auctions/${this.auctionId}`) // eslint-disable-line
                 .then(response => {
                     this.auction = response.data
                     this.auction.startDate = toDateTime(this.auction.startDate)
@@ -348,7 +348,7 @@ export default {
                         indefinite: true
                     })
 
-                    axios.post(`http://${process.env.VUE_APP_API_URL}bids/`, {  // eslint-disable-line
+                    axios.post(`${process.env.VUE_APP_API_URL}bids/`, {  // eslint-disable-line
                         "idAuction": this.auctionId,
                         "idBidder": this.$parent.user.idWallet,
                         "value": this.bidValue,

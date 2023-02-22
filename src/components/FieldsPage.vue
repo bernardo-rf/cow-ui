@@ -69,7 +69,7 @@ export default{
     },  
     methods:{
         getFields(){
-            axios.get(`http://${process.env.VUE_APP_API_URL}fields/${this.$parent.user.idWallet}/full_info`) // eslint-disable-line
+            axios.get(`${process.env.VUE_APP_API_URL}fields/${this.$parent.user.idWallet}/full_info`) // eslint-disable-line
             .then(response => {
                 this.fields = response.data
                 this.isLoading = false

@@ -205,7 +205,7 @@ export default {
             return dirty || validated ? (valid ? "" : "is-danger") : "";
         },
         getAppointment() {
-            axios.get(`http://${process.env.VUE_APP_API_URL}users/`) // eslint-disable-line
+            axios.get(`${process.env.VUE_APP_API_URL}users/`) // eslint-disable-line
                 .then(response => {
                     const usersAux = response.data
                     usersAux.forEach(user => {
@@ -214,13 +214,13 @@ export default {
                         }
                     })
 
-                    axios.get(`http://${process.env.VUE_APP_API_URL}appointment/${this.$route.params.appointmentId}`) // eslint-disable-line
+                    axios.get(`${process.env.VUE_APP_API_URL}appointment/${this.$route.params.appointmentId}`) // eslint-disable-line
                         .then(response => {
                             this.appointment = response.data
                             this.appointment.appointmentDate = new Date(this.appointment.appointmentDate)
                             this.idVeterinary = this.appointment.idUser
 
-                            axios.get(`http://${process.env.VUE_APP_API_URL}bovines/${this.appointment.idBovine}`) // eslint-disable-line
+                            axios.get(`${process.env.VUE_APP_API_URL}bovines/${this.appointment.idBovine}`) // eslint-disable-line
                                 .then(response => {
                                     this.cow = response.data
                                     this.cow.birthDate = toDate(this.cow.birthDate)
@@ -276,7 +276,7 @@ export default {
                         return
                     }
 
-                    axios.put(`http://${process.env.VUE_APP_API_URL}appointment/${this.$route.params.appointmentId}`, { // eslint-disable-line
+                    axios.put(`${process.env.VUE_APP_API_URL}appointment/${this.$route.params.appointmentId}`, { // eslint-disable-line
                         "idAppointment": this.appointment.idAppointment,
                         "idAppointmentRequest": this.appointment.idAppointmenRequest,
                         "idContract": this.appointment.idContract,

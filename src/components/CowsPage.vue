@@ -86,7 +86,7 @@ export default {
     },
     methods: {
         getCows(){
-            axios.get(`http://${process.env.VUE_APP_API_URL}bovines/${this.$parent.user.idWallet}/own`)  // eslint-disable-line
+            axios.get(`${process.env.VUE_APP_API_URL}bovines/${this.$parent.user.idWallet}/own`)  // eslint-disable-line
             .then(response => {
                 this.cows = response.data
                 this.cows.forEach(cow => {

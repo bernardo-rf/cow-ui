@@ -153,14 +153,14 @@ export default {
             return dirty || validated ? (valid ? "" : "is-danger") : "";
         },
         getAuction() {
-            axios.get(`http://${process.env.VUE_APP_API_URL}auctions/${this.$route.params.auctionId}`) // eslint-disable-line
+            axios.get(`${process.env.VUE_APP_API_URL}auctions/${this.$route.params.auctionId}`) // eslint-disable-line
                 .then(response => {
                     this.auction = response.data
                     this.auction.startDate = new Date(this.auction.startDate)
                     this.auction.endDate = new Date(this.auction.endDate)
                     this.idBovine = this.auction.bovine.idBovine
 
-                    axios.get(`http://${process.env.VUE_APP_API_URL}bovines/${this.auction.bovine.idBovine}`) // eslint-disable-line
+                    axios.get(`${process.env.VUE_APP_API_URL}bovines/${this.auction.bovine.idBovine}`) // eslint-disable-line
                         .then(response => {
                             var cow = response.data
                             this.cows.push(cow)
@@ -216,7 +216,7 @@ export default {
                         this.status = 1;
                     }
 
-                    axioss.put(`http://${process.env.VUE_APP_API_URL}auctions/${this.auction.idAuction}`, { // eslint-disable-line
+                    axioss.put(`${process.env.VUE_APP_API_URL}auctions/${this.auction.idAuction}`, { // eslint-disable-line
                         "idAuction": this.auction.idAuction,
                         "idBovine": this.idBovine,
                         "idContract": this.idContract,

@@ -178,12 +178,12 @@ export default{
     },
     methods: {
         getField(){
-            axios.get(`http://${process.env.VUE_APP_API_URL}fields/${this.fieldId}`) // eslint-disable-line
+            axios.get(`${process.env.VUE_APP_API_URL}fields/${this.fieldId}`) // eslint-disable-line
             .then(response => {
                 this.field = response.data
                 this.center = [this.field.latitude, this.field.longitude];
 
-                axios.get(`http://${process.env.VUE_APP_API_URL}fields/bovines/${this.fieldId}`) // eslint-disable-line
+                axios.get(`${process.env.VUE_APP_API_URL}fields/bovines/${this.fieldId}`) // eslint-disable-line
                 .then(response => {
                     var responseData = response.data
                     this.cows = responseData.bovines

@@ -241,11 +241,11 @@ export default {
             return dirty || validated ? (valid ? "" : "is-danger") : "";
         },
         getField() {
-            axios.get(`http://${process.env.VUE_APP_API_URL}fields/${this.$route.params.fieldId}`) // eslint-disable-line
+            axios.get(`${process.env.VUE_APP_API_URL}fields/${this.$route.params.fieldId}`) // eslint-disable-line
                 .then(response => {
                     this.field = response.data
 
-                    axios.get(`http://${process.env.VUE_APP_API_URL}fields/bovines/${this.$route.params.fieldId}/notIn`) // eslint-disable-line
+                    axios.get(`${process.env.VUE_APP_API_URL}fields/bovines/${this.$route.params.fieldId}/notIn`) // eslint-disable-line
                         .then(response => {
                             this.cows = response.data
                             this.isLoadingPanel = false
@@ -292,7 +292,7 @@ export default {
                         return
                     }
 
-                    axios.put(`http://${process.env.VUE_APP_API_URL}fields/${this.$route.params.fieldId}`, { // eslint-disable-line
+                    axios.put(`${process.env.VUE_APP_API_URL}fields/${this.$route.params.fieldId}`, { // eslint-disable-line
                         "idField": this.$route.params.fieldId,
                         "idOwner": this.$parent.user.idWallet,
                         "fieldDescription": this.field.fieldDescription,

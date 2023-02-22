@@ -6,7 +6,7 @@
                     <div class="column has-text-centered pt-4">
                         <img class="image is-128x128 is-horizontal-center" :src="require('../assets/img/icon.png')"/>
                         <h1 id="home_title">COW</h1>
-                        <h4 id="home_subtitle">Login</h4>
+                        <h4 id="home_subtitle">Sign In</h4>
                         <div class="columns is-centered">
                             <div class="column is-5">
                                 <div class="card box shadow pt-0 pl-0 pr-0 pb-0">
@@ -26,7 +26,7 @@
                                                         <b-input rounded type="password" v-model="password"></b-input>
                                                     </b-field>
                                                 </validation-provider>
-                                                <b-button class="mt-4" type="is-primary" expanded rounded native-type="submit" :loading="isLoading">Login</b-button>
+                                                <b-button class="mt-4" type="is-primary" expanded rounded native-type="submit" :loading="isLoading">Sign In</b-button>
                                             </form>
                                         </validation-observer>
                                     </div>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="columns">
                             <div class="column">
-                                <b-button type="is-text" tag="router-link" to="/register">Create an account</b-button>
+                                <b-button type="is-text" tag="router-link" to="/register">Don't have an account ? Sign Up.</b-button>
                             </div>
                         </div>
                         <div class="columns">
@@ -78,7 +78,7 @@ export default{
             this.isInvalidLogin = false
             this.isLoading = true
 
-            axios.post(`http://${process.env.VUE_APP_API_URL}users/auth/`,{  // eslint-disable-line
+            axios.post(`${process.env.VUE_APP_API_URL}users/auth/`,{  // eslint-disable-line
                 email: this.email,
                 password: this.password
             })
