@@ -23,4 +23,7 @@ npm run serve
 
 5. Check `http://localhost:8081` to view COW plataform.
 
+- NOTE:
+    - A .env.example is provided to help the setup of the project.
+
 

@@ -102,8 +102,8 @@
                                             <div class="card-content pt-0 mb-0">
                                                 <div class="columns is-vcentered">
                                                     <div class="column is-2">
-                                                        <figure class="image is-64x64 is-horizontal-center">
-                                                            <img class="image is-rounded"
+                                                        <figure class="image is-64x64 is-horizontal-center is-vcentered">
+                                                            <img class="thumbnail-layout image is-rounded" 
                                                                 :src="cow.imageCID == '' ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID"
                                                                 :title="cow.SerialNumber">
                                                         </figure>
@@ -159,6 +159,7 @@
 </template>
 
 <script>
+import {toDate} from '../helpers.js'
 
 export default {
     data() {
@@ -192,6 +193,10 @@ export default {
                     axios.get(`${process.env.VUE_APP_API_URL}bovines/${this.appointmentRequest.idBovine}`) // eslint-disable-line
                         .then(response => {
                             this.cow = response.data
+
+                            console.log(this.cow)
+                            this.cow.birthDate = toDate(this.cow.birthDate)
+                            this.cow.address = this.cow.field.address
 
                             axios.get(`${process.env.VUE_APP_API_URL}users/veterinary`) // eslint-disable-line
                                 .then(response => {

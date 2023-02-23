@@ -7,7 +7,7 @@
                     <h1 id="home_title">COW</h1>
                     <h4 id="home_subtitle">About</h4>
                     <div class="columns mt-1">
-                        <p class="has-text-centered">COW is a DLT project created for the thesis of the Master in Computer Engineering-Mobile Computing at the Polytechnic of Leiria. The goal is to create a open source plataform, enabling tracking cattele and allow management complex supply chains with multiple stakeholders.</p>
+                        <p class="has-text-centered">The COW project is based on involving blockchain technology as a way to improve the efficiency and transparency of supply chain management in agriculture, through Hedera technology.  The platform developed under the project allows extending the management capacity by identifying each of those involved in the chain, presenting real and abdicable information in real time, improving traceability..</p>
                     </div>
                     <div class="mt-3">
                         <h4 id="home_subtitle">Contribuitions</h4>
@@ -26,7 +26,7 @@
                                 <figure class="image is-64x64 is-horizontal-center">
                                     <img class="image is-rounded" :src="require('../assets/img/credits_bernardo.jpg')" >
                                 </figure>
-                                <a href="https://github.com/bernardo-figueiredo/" target="_blank">Benardo Figueiredo</a>
+                                <a href="https://github.com/bernardo-rf/" target="_blank">Benardo Figueiredo</a>
                             </div>
                         </div>
                     </div>

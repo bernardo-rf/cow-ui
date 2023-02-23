@@ -113,8 +113,8 @@
                                                 <div class="card-content pt-0 mb-0">
                                                     <div class="columns is-vcentered">
                                                         <div class="column is-2">
-                                                            <figure class="image is-64x64 is-horizontal-center">
-                                                                <img class="image is-rounded"
+                                                            <figure class="image is-64x64 is-horizontal-center is-vcentered">
+                                                                <img class="thumbnail-layout image is-rounded" 
                                                                     :src="cow.imageCID == ''  ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID"
                                                                     :title="cow.SerialNumber">
                                                             </figure>

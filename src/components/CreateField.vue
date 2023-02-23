@@ -30,8 +30,8 @@
                                         </div>
                                         <div class="columns">
                                             <div class="column">
-                                                <validation-provider vid="address" rules="required|max:250"
-                                                    name="Address" v-slot="validationContext">
+                                                <validation-provider vid="address" rules="required|max:250" name="Address"
+                                                    v-slot="validationContext">
                                                     <b-field :type="getValidationState(validationContext)"
                                                         :message="validationContext.errors[0]">
                                                         <template slot="label">Address <span
@@ -62,8 +62,7 @@
                                                     max_value: 90,
                                                     latitude_validation: latitude
                                                 }" name="Latitude" v-slot="validationContext">
-                                                    <b-field label="Latitude"
-                                                        :type="getValidationState(validationContext)"
+                                                    <b-field label="Latitude" :type="getValidationState(validationContext)"
                                                         :message="validationContext.errors[0]">
                                                         <template slot="label">Latitude <span
                                                                 class="has-text-danger">*</span></template>
@@ -78,13 +77,11 @@
                                                     max_value: 180,
                                                     longitude_validation: longitude
                                                 }" name="Longitude" v-slot="validationContext">
-                                                    <b-field label="Longitude"
-                                                        :type="getValidationState(validationContext)"
+                                                    <b-field label="Longitude" :type="getValidationState(validationContext)"
                                                         :message="validationContext.errors[0]">
                                                         <template slot="label">Longitude <span
                                                                 class="has-text-danger">*</span></template>
-                                                        <b-input v-model="longitude" :placeholder=longitude
-                                                            type="decimal">
+                                                        <b-input v-model="longitude" :placeholder=longitude type="decimal">
                                                         </b-input>
                                                     </b-field>
                                                 </validation-provider>
@@ -107,8 +104,7 @@
                                             <div class="column">
                                                 <validation-provider vid="active" rules="required" name="Active"
                                                     v-slot="validationContext">
-                                                    <b-field label="Active"
-                                                        :type="getValidationState(validationContext)"
+                                                    <b-field label="Active" :type="getValidationState(validationContext)"
                                                         :message="validationContext.errors[0]">
                                                         <b-switch v-model="active" type="is-dark">
                                                             {{ active ? 'Cows can be place in the field' : "Cows can't be place in the field"}}
@@ -146,29 +142,29 @@
                                                 aria-next-label="Next page" aria-previous-label="Previous page"
                                                 aria-page-label="Page" aria-current-label="Current page">
 
-                                                    <b-table-column field="serialNumber" label="Serial Number" sortable>
-                                                        <template v-slot:default="props">
-                                                            {{ props.row.serialNumber }}
-                                                        </template>
-                                                    </b-table-column>
-                                                    <b-table-column field="color" label="Color" sortable>
-                                                        <template v-slot:default="props">
-                                                            {{ props.row.color }}
-                                                        </template>
-                                                    </b-table-column>
-                                                    <b-table-column field="breed" label="Breed" sortable>
-                                                        <template v-slot:default="props">
-                                                            {{ props.row.color }}
-                                                        </template>
-                                                    </b-table-column>
-                                                    <b-table-column field="gender" label="Gender" sortable>
-                                                        <template v-slot:default="props">
-                                                            <b-icon pack="fas"
-                                                                :icon="props.row.gender == '1' ? 'mars' : 'venus'">
-                                                            </b-icon>
-                                                            {{ props.row.gender == '1' ? 'Masculine' : 'Feminine' }}
-                                                        </template>
-                                                    </b-table-column>
+                                                <b-table-column field="serialNumber" label="Serial Number" sortable>
+                                                    <template v-slot:default="props">
+                                                        {{ props.row.serialNumber }}
+                                                    </template>
+                                                </b-table-column>
+                                                <b-table-column field="color" label="Color" sortable>
+                                                    <template v-slot:default="props">
+                                                        {{ props.row.color }}
+                                                    </template>
+                                                </b-table-column>
+                                                <b-table-column field="breed" label="Breed" sortable>
+                                                    <template v-slot:default="props">
+                                                        {{ props.row.color }}
+                                                    </template>
+                                                </b-table-column>
+                                                <b-table-column field="gender" label="Gender" sortable>
+                                                    <template v-slot:default="props">
+                                                        <b-icon pack="fas"
+                                                            :icon="props.row.gender == '1' ? 'mars' : 'venus'">
+                                                        </b-icon>
+                                                        {{ props.row.gender == '1' ? 'Masculine' : 'Feminine' }}
+                                                    </template>
+                                                </b-table-column>
                                             </b-table>
                                         </div>
                                         <hr />
@@ -177,8 +173,7 @@
                                             </b-button>
                                         </b-field>
                                         <b-field class="is-pulled-right">
-                                            <b-button type="is-dark" rounded :loading="isLoading"
-                                                @click.prevent="submit">
+                                            <b-button type="is-dark" rounded :loading="isLoading" @click.prevent="submit">
                                                 Submit</b-button>
                                         </b-field>
                                     </b-tab-item>
@@ -310,7 +305,7 @@ export default {
                                 message: 'Field created successfully!',
                                 type: 'is-success'
                             })
-                            this.$router.push("/fields").catch(e => { console.log(e)})
+                            this.$router.push("/fields").catch(e => { console.log(e) })
                         })
                         .catch(error => {
                             console.log(error)

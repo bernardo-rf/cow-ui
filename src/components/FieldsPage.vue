@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3 class="title is-3">Private Fields</h3>
+        <h3 class="title is-3">My Fields</h3>
         <div class="card box shadow">
             <div class="card-content">
                 <template v-if="isLoading">
@@ -12,8 +12,8 @@
                 </template>
                 <template v-else-if="fields.length == 0">
                     <div class="columns is-centered">
-                        <div class="column is-12 has-text-right">
-                            <b-button icon-left="plus" type="is-dark" rounded tag="router-link" :to="'/newField'">Create</b-button>
+                        <div class="column is-12 has-text-right mr-1">
+                            <b-button icon-right="plus" type="is-dark" rounded tag="router-link" :to="'/newField'">Create</b-button>
                         </div> 
                     </div>
                     <div class="columns is-centered">
@@ -25,8 +25,8 @@
                 <template v-else>
                     <template>
                         <div class="columns is-vcentered">
-                            <div class="column is-12 has-text-right crud-button">
-                                <b-button icon-left="plus" type="is-dark" rounded tag="router-link" :to="'/newField'">Create</b-button>
+                            <div class="column is-12 has-text-right crud-button mr-1">
+                                <b-button icon-right="plus" type="is-dark" rounded tag="router-link" :to="'/newField'">Create</b-button>
                             </div>
                         </div>
                     </template>

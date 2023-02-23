@@ -443,11 +443,12 @@ export default {
 						data.append('pinataOptions', '{"cidVersion": 1}');
 						data.append('pinataMetadata', '{"name": "' + this.file.name + '"}');
 
+						var token = `Bearer ${process.env.VUE_APP_PINATA_API_KEY}`
 						var config = {
 							method: 'post',
 							url: 'https://api.pinata.cloud/pinning/pinFileToIPFS',
 							headers: {
-								'Authorization': `${process.env.VUE_APP_PINATA_API_KEY}`
+								'Authorization': token
 							},
 							data: data
 						};
