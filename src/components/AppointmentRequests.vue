@@ -11,9 +11,9 @@
                     </div>
                 </template>
                 <template v-else-if="appointmentsRequests.length == 0">
-                    <div class="columns is-centered">
+                    <div v-if="user.type != 'VETERINARY'" class="columns is-centered">
                         <div class="column is-12 has-text-right">
-                            <b-button icon-left="plus" type="is-dark" rounded tag="router-link"
+                            <b-button icon-right="plus" type="is-dark" rounded tag="router-link"
                                 :to="'/newAppointmentRequest/0'">Create
                             </b-button>
                         </div>
@@ -26,10 +26,10 @@
                     </div>
                 </template>
                 <template v-else>
-                    <template>
+                    <template v-if="user.type != 'VETERINARY'">
                         <div class="columns is-vcentered">
                             <div class="column is-12 has-text-right crud-button">
-                                <b-button icon-left="plus" type="is-dark" rounded tag="router-link"
+                                <b-button icon-right="plus" type="is-dark" rounded tag="router-link"
                                     :to="'/newAppointmentRequest/0'">Create
                                 </b-button>
                             </div>
@@ -37,45 +37,35 @@
                     </template>
                     <div>
                         <b-table :data="appointmentsRequests" :paginated="isPaginated" :per-page="perPage"
-                            :current-page.sync="currentPage" :pagination-simple="isPaginationSimple"
-                            detailed detail-key="idAppointmentRequest"
-                            :detail-transition="transitionName" :pagination-position="paginationPosition"
-                            aria-next-label="Next page" aria-previous-label="Previous page" aria-page-label="Page"
-                            aria-current-label="Current page">
+                            :current-page.sync="currentPage" :pagination-simple="isPaginationSimple" detailed
+                            detail-key="idAppointmentRequest" :detail-transition="transitionName"
+                            :pagination-position="paginationPosition" aria-next-label="Next page"
+                            aria-previous-label="Previous page" aria-page-label="Page" aria-current-label="Current page">
 
-                            <template slot-scope="props">
-                                <b-table-column field="appointmentDate" label="Date" sortable searchable>
-                                    <template slot="searchable" slot-scope="props">
-                                        <b-input v-model="props.filters[props.column.field]" placeholder="Search..."
-                                            icon="magnify" size="is-small" />
-                                    </template>
+                            <b-table-column field="appointmentDate" label="Date" sortable searchable>
+                                <template v-slot:default="props">
                                     {{ props.row.appointmentDate }}
-                                </b-table-column>
-                                <b-table-column field="bovineSerialNumber" label="Bovine Serial Number" sortable
-                                    searchable>
-                                    <template slot="searchable" slot-scope="props">
-                                        <b-input v-model="props.filters[props.column.field]" placeholder="Search..."
-                                            icon="magnify" size="is-small" />
-                                    </template>
+                                </template>
+                            </b-table-column>
+                            <b-table-column field="bovineSerialNumber" label="Bovine Serial Number" sortable searchable>
+                                <template v-slot:default="props">
                                     {{ props.row.bovineSerialNumber }}
-                                </b-table-column>
-                                <b-table-column field="userName" label="Veterinary" sortable searchable>
-                                    <template slot="searchable" slot-scope="props">
-                                        <b-input v-model="props.filters[props.column.field]" placeholder="Search..."
-                                            icon="magnify" size="is-small" />
-                                    </template>
+                                </template>
+                            </b-table-column>
+                            <b-table-column field="userName" label="Veterinary" sortable searchable>
+                                <template v-slot:default="props">
                                     {{ props.row.userName }}
-                                </b-table-column>
-                                <b-table-column field="status" label="Status" sortable searchable>
-                                    <template slot="searchable" slot-scope="props">
-                                        <b-input v-model="props.filters[props.column.field]" placeholder="Search..."
-                                            icon="magnify" size="is-small" />
-                                    </template>
+                                </template>
+                            </b-table-column>
+                            <b-table-column field="status" label="Status" sortable searchable>
+                                <template v-slot:default="props">
                                     <b-tag v-if="props.row.status == 0" type="is-warning">Pending Approval</b-tag>
                                     <b-tag v-if="props.row.status == 1" type="is-success">Accepted</b-tag>
                                     <b-tag v-if="props.row.status == 2" type="is-danger">Canceled</b-tag>
-                                </b-table-column>
-                                <b-table-column label="Actions" :visible="visibleValue">
+                                </template>
+                            </b-table-column>
+                            <b-table-column label="Actions" :visible="visibleValue">
+                                <template v-slot:default="props">
                                     <div v-if="props.row.status == 0" class="columns">
                                         <div v-if="$parent.user.type == 'VETERINARY'" class="column">
                                             <b-button @click="updateStatus(1, props.row.idAppointmentRequest)"
@@ -88,15 +78,14 @@
                                             </b-button>
                                         </div>
                                         <div v-if="$parent.user.type != 'VETERINARY'" class="column">
-                                            <b-button icon-left="refresh" type="is-dark" size="is-small"
+                                            <b-button icon-right="wrench" class="mr-2" type="is-dark" size="is-small"
                                                 tag="router-link"
                                                 :to="'appointmentRequest/' + props.row.idAppointmentRequest + '/update'"
                                                 rounded>Update</b-button>
                                         </div>
                                     </div>
-                                </b-table-column>
-                            </template>
-
+                                </template>
+                            </b-table-column>
                             <template #detail="props">
                                 <article class="media">
                                     <div class="media-content">
@@ -111,6 +100,7 @@
                                     </div>
                                 </article>
                             </template>
+
                         </b-table>
                     </div>
                 </template>
@@ -119,12 +109,13 @@
     </div>
 </template>
 <script>
-import { toDateTime  } from '../helpers.js'
+import { toDateTime } from '../helpers.js'
 
 export default {
     data() {
         return {
             title: "Appointments Requests",
+            user: this.$store.getters.user,
             isLoading: true,
             appointmentsRequests: [],
             isPaginated: true,
@@ -164,6 +155,7 @@ export default {
                         }
                     })
                     this.isLoading = false
+                    console.log(this.appointmentsRequests)
                 })
                 .catch(error => {
                     console.log(error)

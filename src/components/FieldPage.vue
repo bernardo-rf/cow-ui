@@ -16,7 +16,7 @@
                         </div>
                         <template>
                             <div class="column is-6 has-text-right crud-button">
-                                <b-button type="is-dark" rounded tag="router-link" :to="'/field/' + field.idField + '/update'">Update</b-button>
+                                <b-button icon-right="wrench" class="mr-2" type="is-dark" rounded tag="router-link" :to="'/field/' + field.idField + '/update'">Update</b-button>
                             </div>
                         </template>
                     </div>
@@ -58,7 +58,7 @@
                                             <div v-if="field.observation">
                                             <hr/>
                                             <div  class="columns">
-                                                <div class="column is-4">
+                                                <div class="column is-12">
                                                     <br/>
                                                     <span class="has-text-weight-bold">Observation: </span> {{field.observation}}
                                                 </div>
@@ -82,8 +82,8 @@
                                             <div class="card-content pt-0 mb-0">
                                                 <div class="columns is-vcentered">
                                                     <div class="column is-2">
-                                                        <figure class="image is-64x64 is-horizontal-center">
-                                                            <img class="image is-rounded" :src="cow.imageCID == '' ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID"  :title="cow.SerialNumber">
+                                                        <figure class="image is-64x64 is-horizontal-center is-vcentered">
+                                                            <img class="thumbnail-layout image is-rounded" :src="cow.imageCID == '' ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID"  :title="cow.SerialNumber">
                                                         </figure>
                                                     </div>
                                                     <div class="column is-2">

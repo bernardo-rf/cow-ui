@@ -13,7 +13,7 @@
                     <template>
                         <div class="columns is-vcentered">
                             <div class="column is-12 has-text-right crud-button">
-                                <b-button icon-left="plus" type="is-dark" rounded tag="router-link" :to="'/newAuction'">
+                                <b-button icon-right="plus" type="is-dark" rounded tag="router-link" :to="'/newAuction'">
                                     Create</b-button>
                             </div>
                         </div>
@@ -28,7 +28,7 @@
                     <template>
                         <div class="columns is-vcentered">
                             <div class="column has-text-right crud-button">
-                                <b-button icon-left="plus" type="is-dark" rounded tag="router-link" :to="'/newAuction'">
+                                <b-button icon-right="plus" type="is-dark" rounded tag="router-link" :to="'/newAuction'">
                                     Create</b-button>
                             </div>
                         </div>
@@ -38,27 +38,26 @@
                             <div class="columns is-vcentered">
                                 <div class="column is-2 has-text-centered ">
                                     <router-link :to="'/auction/' + auction.idAuction"><span class="is-size-5">{{
-                                            auction.auctionDescription
+                                        auction.auctionDescription
                                     }}</span></router-link>
                                 </div>
                                 <div class="column is-4"
                                     v-if="auction.endTimestamp >= currentTimestamp && currentTimestamp <= auction.startTimestamp">
                                     <countdown :time="(auction.startTimestamp - currentTimestamp)"
                                         @end="onCountdownEndInProgress(auction.idAuction)">
-                                        <template slot-scope="props"><span class="has-text-weight-bold">Start In:
-                                            </span> {{ props.days
-                                            }} d, {{ props.hours }} hrs, {{ props.minutes }}
-                                            min, {{ props.seconds }}sec.</template>
+                                        <template slot-scope="props">
+                                            <span class="has-text-weight-bold">Start In: </span> 
+                                            {{ props.days}} d, {{ props.hours }} hrs, {{ props.minutes }} min, {{ props.seconds }}sec.</template>
                                     </countdown>
                                 </div>
                                 <div class="column is-4"
                                     v-if="auction.endTimestamp >= currentTimestamp && currentTimestamp >= auction.startTimestamp">
                                     <countdown :time="(auction.endTimestamp - currentTimestamp)"
                                         @end="onCountdownEndConcluded(auction.idAuction)">
-                                        <template slot-scope="props"><span class="has-text-weight-bold">Time
-                                                Remaining:</span> {{ props.days
-                                                }} d, {{ props.hours }} hrs, {{ props.minutes }}
-                                            min, {{ props.seconds }}sec.</template>
+                                        <template slot-scope="props">
+                                            <span class="has-text-weight-bold">Time Remaining:</span> 
+                                            {{props.days }} d, {{ props.hours }} hrs, {{ props.minutes }} min, {{ props.seconds }}sec.
+                                        </template>
                                     </countdown>
                                 </div>
                                 <div class="column is-2 has-text-centered">
@@ -66,9 +65,11 @@
                                     }}€
                                 </div>
                                 <div class="column is-2 has-text-centered">
-                                    <span class="has-text-weight-bold">Curr. Highest Bid </span> {{auction.highestBid == 0 ? 'N/D' : auction.highestBid + ' €' }}
+                                    <span class="has-text-weight-bold">Curr. Highest Bid </span> {{ auction.highestBid == 0
+                                        ?
+                                        'N/D' : auction.highestBid + ' €' }}
                                 </div>
-                                <div class="column is-1">
+                                <div class="column is-1 mr-2">
                                     <template slot="searchable" slot-scope="props">
                                         <b-input v-model="props.filters[props.column.field]" placeholder="Search..."
                                             icon="magnify" size="is-small" />
@@ -112,7 +113,7 @@
                                 <div class="columns is-vcentered">
                                     <div class="column is-2 has-text-centered ">
                                         <router-link :to="'/auction/' + auction.idAuction"><span class="is-size-5">{{
-                                                auction.auctionDescription
+                                            auction.auctionDescription
                                         }}</span></router-link>
                                     </div>
                                     <div class="column is-2">
@@ -123,15 +124,15 @@
                                     </div>
                                     <div class="column is-2 has-text-centered">
                                         <span class="has-text-weight-bold">Bovine: </span>
-                                        <figure class="image is-64x64 is-horizontal-center">
-                                            <img class="image is-rounded"
+                                        <figure class="image is-64x64 is-horizontal-center is-vcentered">
+                                            <img class="thumbnail image is-rounded"
                                                 :src="auction.bovine.imageCID == '' ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + auction.bovine.imageCID"
                                                 :title="auction.bovine.serialNumber">
                                         </figure>
                                     </div>
                                     <div class="column is-2 has-text-centered">
                                         <span class="has-text-weight-bold">Highest Bid:</span> {{
-                                                auction.highestBid
+                                            auction.highestBid
                                         }}€
                                     </div>
                                     <div class="column is-1">
@@ -182,8 +183,9 @@ export default {
                         this.pastAuctions = []
                     }
                     var auctions = response.data
+                    console.log(auctions)
                     this.currentTimestamp = new Date().getTime()
-                    
+
                     auctions.forEach(auction => {
                         auction.startTimestamp = Date.parse(toDateTime(auction.startDate))
                         auction.endTimestamp = Date.parse(toDateTime(auction.endDate))

@@ -36,8 +36,8 @@
                                         <b-tab-item label="Informations">
                                             <div class="columns">
                                                 <div class="column">
-                                                    <validation-provider vid="motive" rules="required|max:50"
-                                                        name="Motive" v-slot="validationContext">
+                                                    <validation-provider vid="motive" rules="required|max:50" name="Motive"
+                                                        v-slot="validationContext">
                                                         <b-field :type="getValidationState(validationContext)"
                                                             :message="validationContext.errors[0]">
                                                             <template slot="label">Motive <span
@@ -57,8 +57,8 @@
                                                                     class="has-text-danger">*</span></template>
                                                             <b-select v-model="idUser" placeholder="Select a Veterinary"
                                                                 expanded>
-                                                                <option v-for="user in veterinaries"
-                                                                    :value="user.idUser" :key="user.id">
+                                                                <option v-for="user in veterinaries" :value="user.idUser"
+                                                                    :key="user.id">
                                                                     {{ user.name }}
                                                                 </option>
                                                             </b-select>
@@ -73,7 +73,7 @@
                                                             <template slot="label">Appointment Date <span
                                                                     class="has-text-danger">*</span></template>
                                                             <b-datetimepicker v-model="appointmentDate"
-                                                                placeholder="Click to select..." 
+                                                                placeholder="Click to select..."
                                                                 :datepicker="{ showWeekNumber }" :min-datetime="dateNow"
                                                                 :timepicker="{ enableSeconds, hourFormat: format }"
                                                                 horizontal-time-picker>
@@ -86,11 +86,10 @@
                                                 <div class="column is-6">
                                                     <validation-provider rules="required" name="User"
                                                         v-slot="validationContext">
-                                                        <b-field label="User"
-                                                            :type="getValidationState(validationContext)"
+                                                        <b-field label="User" :type="getValidationState(validationContext)"
                                                             :message="validationContext.errors[0]">
-                                                            <b-select v-model="idUserRequest"
-                                                                placeholder="Select a User" expanded disabled>
+                                                            <b-select v-model="idUserRequest" placeholder="Select a User"
+                                                                expanded disabled>
                                                                 <option v-for="user in users" :value="idUserRequest"
                                                                     :key="user.id">
                                                                     {{ user.name }}
@@ -116,8 +115,8 @@
 
                                             </div>
                                             <div>
-                                                <b-message v-if="isBovineSelected" type="is-danger"
-                                                    title="Create: Warning" aria-close-label="Close message">
+                                                <b-message v-if="isBovineSelected" type="is-danger" title="Create: Warning"
+                                                    aria-close-label="Close message">
                                                     <strong>Information:</strong> To create an appointment request is
                                                     required to
                                                     select a bovine.
@@ -134,24 +133,29 @@
                                                         aria-next-label="Next page" aria-previous-label="Previous page"
                                                         aria-page-label="Page" aria-current-label="Current page">
 
-                                                        <template slot-scope="props">
-                                                            <b-table-column field="serialNumber" label="Serial Number"
-                                                                sortable>
+                                                        <b-table-column field="serialNumber" label="Serial Number" sortable>
+                                                            <template v-slot:default="props">
                                                                 {{ props.row.serialNumber }}
-                                                            </b-table-column>
-                                                            <b-table-column field="color" label="Color" sortable>
+                                                            </template>
+                                                        </b-table-column>
+                                                        <b-table-column field="color" label="Color" sortable>
+                                                            <template v-slot:default="props">
                                                                 {{ props.row.color }}
-                                                            </b-table-column>
-                                                            <b-table-column field="breed" label="Breed" sortable>
+                                                            </template>
+                                                        </b-table-column>
+                                                        <b-table-column field="breed" label="Breed" sortable>
+                                                            <template v-slot:default="props">
                                                                 {{ props.row.color }}
-                                                            </b-table-column>
-                                                            <b-table-column field="gender" label="Gender" sortable>
+                                                            </template>
+                                                        </b-table-column>
+                                                        <b-table-column field="gender" label="Gender" sortable>
+                                                            <template v-slot:default="props">
                                                                 <b-icon pack="fas"
                                                                     :icon="props.row.gender == '1' ? 'mars' : 'venus'">
                                                                 </b-icon>
                                                                 {{ props.row.gender == '1' ? 'Masculine' : 'Feminine' }}
-                                                            </b-table-column>
-                                                        </template>
+                                                            </template>
+                                                        </b-table-column>
                                                     </b-table>
                                                 </b-field>
                                             </div>
@@ -212,6 +216,7 @@ export default {
             axios.get(`${process.env.VUE_APP_API_URL}bovines/${this.$parent.user.idWallet}/own`)  // eslint-disable-line
                 .then(response => {
                     this.cows = response.data
+                    console.log(this.cows)
 
                     if (this.$route.params.bovineId != 0) {
                         this.cows.forEach(cow => {
@@ -306,7 +311,7 @@ export default {
                                 type: 'is-success'
                             })
                             this.isLoading = false
-                            this.$router.push("/appointmentRequests").catch(e => { console.log(e)})
+                            this.$router.push("/appointmentRequests").catch(e => { console.log(e) })
                         })
                         .catch(error => {
                             console.log(error)

@@ -14,8 +14,8 @@
                     <template>
                         <div class="columns is-vcentered">
                             <div class="column is-12 has-text-right crud-button">
-                                <b-button class="mr-2" type="is-success" rounded tag="router-link" :to="'/auctions'">Buy</b-button>
-                                <b-button icon-left="plus" type="is-dark" rounded tag="router-link" :to="'/newCow'">Create</b-button>
+                                <b-button icon-right="money-bill-transfer" class="mr-2" type="is-success" rounded tag="router-link" :to="'/auctions'">Buy</b-button>
+                                <b-button icon-right="plus" type="is-dark" class="mr-2" rounded tag="router-link" :to="'/newCow'">Create</b-button>
                             </div>
                         </div>
                     </template>
@@ -29,8 +29,8 @@
                     <template>
                         <div class="columns is-vcentered">
                             <div class="column is-12 has-text-right crud-button">
-                                <b-button class="mr-2" type="is-success" rounded tag="router-link" :to="'/auctions'">Buy</b-button>
-                                <b-button icon-left="plus" type="is-dark" rounded tag="router-link" :to="'/newCow'">Create</b-button>
+                                <b-button icon-right="money-bill-transfer" class="mr-2" type="is-success" rounded tag="router-link" :to="'/auctions'">Buy</b-button>
+                                <b-button icon-right="plus" class="mr-2" type="is-dark" rounded tag="router-link" :to="'/newCow'">Create</b-button>
                             </div>
                         </div>
                     </template>
@@ -38,8 +38,8 @@
                         <div class="card-content pt-0 pb-0">
                             <div class="columns is-vcentered">
                                 <div class="column is-2">
-                                    <figure class="image is-64x64 is-horizontal-center">
-                                        <img class="image is-rounded" :src="cow.imageCID == '' ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID" :title="cow.SerialNumber">
+                                    <figure class="image is-128x128 is-horizontal-center is-vcentered">
+                                        <img class="thumbnail image is-rounded" :src="cow.imageCID == '' ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID" :title="cow.SerialNumber">
                                     </figure>
                                 </div>
                                 <div class="column is-2">

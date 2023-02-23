@@ -36,8 +36,8 @@
                                         <b-tab-item label="Informations">
                                             <div class="columns">
                                                 <div class="column">
-                                                    <validation-provider vid="motive" rules="required|max:50"
-                                                        name="Type" v-slot="validationContext">
+                                                    <validation-provider vid="motive" rules="required|max:50" name="Type"
+                                                        v-slot="validationContext">
                                                         <b-field :type="getValidationState(validationContext)"
                                                             :message="validationContext.errors[0]">
                                                             <template slot="label">Type <span
@@ -73,7 +73,7 @@
                                                             <template slot="label">Appointment Date <span
                                                                     class="has-text-danger">*</span></template>
                                                             <b-datetimepicker v-model="appointmentDate"
-                                                                placeholder="Click to select..." 
+                                                                placeholder="Click to select..."
                                                                 :datepicker="{ showWeekNumber }"
                                                                 :timepicker="{ enableSeconds, hourFormat: format }"
                                                                 :min-datetime="dateNow" horizontal-time-picker>
@@ -123,8 +123,7 @@
                                                         <b-field :type="getValidationState(validationContext)"
                                                             :message="validationContext.errors[0]">
                                                             <template slot="label">Observation </template>
-                                                            <b-input v-model="observation" maxlength="255"
-                                                                type="textarea">
+                                                            <b-input v-model="observation" maxlength="255" type="textarea">
                                                             </b-input>
                                                         </b-field>
                                                     </validation-provider>
@@ -143,24 +142,29 @@
                                                         aria-next-label="Next page" aria-previous-label="Previous page"
                                                         aria-page-label="Page" aria-current-label="Current page">
 
-                                                        <template slot-scope="props">
-                                                            <b-table-column field="serialNumber" label="Serial Number"
-                                                                sortable>
+                                                        <b-table-column field="serialNumber" label="Serial Number" sortable>
+                                                            <template v-slot:default="props">
                                                                 {{ props.row.serialNumber }}
-                                                            </b-table-column>
-                                                            <b-table-column field="color" label="Color" sortable>
+                                                            </template>
+                                                        </b-table-column>
+                                                        <b-table-column field="color" label="Color" sortable>
+                                                            <template v-slot:default="props">
                                                                 {{ props.row.color }}
-                                                            </b-table-column>
-                                                            <b-table-column field="breed" label="Breed" sortable>
+                                                            </template>
+                                                        </b-table-column>
+                                                        <b-table-column field="breed" label="Breed" sortable>
+                                                            <template v-slot:default="props">
                                                                 {{ props.row.color }}
-                                                            </b-table-column>
-                                                            <b-table-column field="gender" label="Gender" sortable>
+                                                            </template>
+                                                        </b-table-column>
+                                                        <b-table-column field="gender" label="Gender" sortable>
+                                                            <template v-slot:default="props">
                                                                 <b-icon pack="fas"
                                                                     :icon="props.row.gender == '1' ? 'mars' : 'venus'">
                                                                 </b-icon>
                                                                 {{ props.row.gender == '1' ? 'Masculine' : 'Feminine' }}
-                                                            </b-table-column>
-                                                        </template>
+                                                            </template>
+                                                        </b-table-column>
                                                     </b-table>
                                                 </b-field>
                                             </div>
@@ -342,7 +346,7 @@ export default {
                         .then(() => {
                             this.isLoading = false
                             loadingSnackbar.close()
-                            this.$router.push("/appointments").catch(e => { console.log(e)})
+                            this.$router.push("/appointments").catch(e => { console.log(e) })
                         })
                 })
         }

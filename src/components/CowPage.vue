@@ -16,11 +16,11 @@
                         </div>
                         <template>
                             <div class="column is-6 has-text-right">
-                                <b-button class="mr-1" type="is-warning" rounded tag="router-link"
+                                <b-button icon-right="stethoscope" class="mr-2" type="is-warning" rounded tag="router-link"
                                     :to="`/newAppointmentRequest/${cow.idBovine}`">Request Appointment</b-button>
-                                <b-button class="mr-1" type="is-success" rounded tag="router-link" :to="`/newAuction`">
+                                <b-button icon-right="money-bill-transfer" class="mr-2" type="is-success" rounded tag="router-link" :to="`/newAuction`">
                                     Sell</b-button>
-                                <b-button type="is-dark" rounded tag="router-link" :to="`/cow/${cow.idBovine}/update`">
+                                <b-button icon-right="wrench" class="mr-2" type="is-dark" rounded tag="router-link" :to="`/cow/${cow.idBovine}/update`">
                                     Update</b-button>
                             </div>
                         </template>
@@ -32,7 +32,7 @@
                                     <div class="columns">
                                         <div class="column is-2" style="padding-top: 60px ;">
                                             <figure class="image is-128x128 is-horizontal-center is-vcentered">
-                                                <img class="image is-rounded"
+                                                <img class="thumbnail image is-rounded"
                                                     :src="cow.imageCID == '' ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID">
                                             </figure>
                                         </div>
@@ -295,6 +295,8 @@ export default {
                                     axios.get(`${process.env.VUE_APP_API_URL}bovines/genealogy/${this.cowId}`) // eslint-disable-line
                                         .then(response => {
                                             this.genealogy = response.data
+                                            console.log("this.genealogy")
+                                            console.log(this.genealogy)
 
                                             var imgAux = ''
                                             if (this.genealogy.length == 1) {
@@ -306,11 +308,15 @@ export default {
                                                 this.genealogyData.push({ id: 1, serial_number: this.genealogy[0].serialNumber, breed: this.genealogy[0].breed, color: this.genealogy[0].color, img: imgAux });
                                             } else {
                                                 this.genealogy.forEach(bovine => {
-                                                    if (bovine.imageCID == '') {
+                                                    if (bovine.imageCID == "") {
+                                                        console.log("TEST")
                                                         imgAux = require('../assets/img/blank_cow_image.png')
                                                     } else {
                                                         imgAux = 'https://gateway.pinata.cloud/ipfs/' + bovine.imageCID
                                                     }
+
+                                                    console.log(bovine.serialNumber)
+                                                    console.log(imgAux)
 
                                                     if (bovine.idBovineParent1 == 0 & bovine.idBovineParent2 == 0) {
                                                         this.genealogyData.push({ id: bovine.idBovine, serial_number: bovine.serialNumber, breed: bovine.breed, color: bovine.color, img: imgAux });
@@ -323,13 +329,15 @@ export default {
                                                                     return obj.id === partner.id
                                                                 })
                                                                 var auxObj = partner
-                                                                this.genealogyData.splice(index, 1, { id: partner.id, pid: bovine.idBovineParent1, serial_number: auxObj.serial_number, breed: auxObj.breed, color: auxObj.color, img: imgAux, tags: ['partner'] })
+                                                                console.log(auxObj)
+                                                                this.genealogyData.splice(index, 1, { id: partner.id, pid: bovine.idBovineParent1, serial_number: auxObj.serial_number, breed: auxObj.breed, color: auxObj.color, img: auxObj.img, tags: ['partner'] })
                                                             }
                                                         })
                                                     }
                                                 })
                                             }
                                             this.isLoading = false
+                                            console.log(this.genealogyData)
                                         })
                                         .catch(error => {
                                             console.log(error)

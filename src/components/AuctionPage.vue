@@ -16,7 +16,7 @@
                         </div>
                         <template v-if="auction.status == 0">
                             <div class="column is-6 has-text-right crud-button">
-                                <b-button type="is-dark" rounded tag="router-link"
+                                <b-button icon-right="wrench" class="mr-2" type="is-dark" rounded tag="router-link"
                                     :to="'/auction/' + auction.idAuction + '/update'">Update</b-button>
                             </div>
                         </template>
@@ -33,7 +33,7 @@
                                                     Place a Bid:
                                                 </p>
                                                 <a class="card-header-icon">
-                                                    <b-icon :icon="props.open ? 'menu-up' : 'menu-down'">
+                                                    <b-icon :icon="props.open ? 'arrow-up' : 'arrow-down'">
                                                     </b-icon>
                                                 </a>
                                             </div>
@@ -78,8 +78,9 @@
                                     <div class="columns">
                                         <div class="column is-vcentered">
                                             <span class="is-size-3">Cow Information</span>
-                                            <figure class="image is-256x256 is-horizontal-center">
-                                                <img class="image is-rounded"
+
+                                            <figure class="image is-128x128 is-horizontal-center is-vcentered">
+                                                <img class="thumbnail image is-rounded"
                                                     :src="auction.bovine.imageCID == '' ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + auction.bovine.imageCID"
                                                     :title="auction.bovine.SerialNumber">
                                             </figure>
@@ -101,12 +102,12 @@
                                                 <div class="columns">
                                                     <div class="column">
                                                         <span class="has-text-weight-bold">Color: </span> {{
-                                                                auction.bovine.color
+                                                            auction.bovine.color
                                                         }}
                                                     </div>
                                                     <div class="column">
                                                         <span class="has-text-weight-bold">Breed: </span> {{
-                                                                auction.bovine.breed
+                                                            auction.bovine.breed
                                                         }}
                                                     </div>
                                                 </div>
@@ -157,12 +158,12 @@
                                             <div class="columns">
                                                 <div class="column">
                                                     <span class="has-text-weight-bold">Start Date: </span> {{
-                                                            auction.startDate
+                                                        auction.startDate
                                                     }}
                                                 </div>
                                                 <div class="column">
                                                     <span class="has-text-weight-bold">End Date: </span> {{
-                                                            auction.endDate
+                                                        auction.endDate
                                                     }}
                                                 </div>
                                             </div>
@@ -170,9 +171,9 @@
                                                 <div class="column"
                                                     v-if="endTimestamp >= currentTimestamp && currentTimestamp >= startTimestamp">
                                                     <countdown :time="(endTimestamp - currentTimestamp)">
-                                                        <template slot-scope="props"><span
-                                                                class="has-text-weight-bold">Time Remaining:</span> {{
-                                                                        props.days
+                                                        <template slot-scope="props"><span class="has-text-weight-bold">Time
+                                                                Remaining:</span> {{
+                                                                    props.days
                                                                 }} d, {{ props.hours }} hrs, {{ props.minutes }}
                                                             min, {{ props.seconds }}sec.</template>
                                                     </countdown>
@@ -184,7 +185,7 @@
                                                         :time="(startTimestamp - currentTimestamp)">
                                                         <template slot-scope="props"><span
                                                                 class="has-text-weight-bold">Starts In:</span> {{
-                                                                        props.days
+                                                                    props.days
                                                                 }} d, {{ props.hours }} hrs, {{ props.minutes }}
                                                             min, {{ props.seconds }}sec.</template>
                                                     </countdown>
@@ -193,12 +194,12 @@
                                             <div class="columns">
                                                 <div class="column">
                                                     <span class="has-text-weight-bold">Created By:</span> {{
-                                                            auction.user.name
+                                                        auction.user.name
                                                     }}
                                                 </div>
                                                 <div class="column">
                                                     <span class="has-text-weight-bold">Starting Price: </span> {{
-                                                            auction.startingPrice
+                                                        auction.startingPrice
                                                     }} €
                                                 </div>
                                             </div>
@@ -315,7 +316,7 @@ export default {
                     this.auction.bovine.birthDate = toDate(this.auction.bovine.birthDate)
                     this.startTimestamp = Date.parse(this.auction.startDate)
                     this.endTimestamp = Date.parse(this.auction.endDate)
-                    this.bidders = this.auction.bidSet.sort((a,b) => b.value - a.value)
+                    this.bidders = this.auction.bidSet.sort((a, b) => b.value - a.value)
                     this.isLoading = false
 
                     if (this.bidders.length == 0) {
@@ -354,7 +355,7 @@ export default {
                         "value": this.bidValue,
                         "bidDate": new Date()
                     })
-                        .then( () => {
+                        .then(() => {
                             this.$buefy.toast.open({
                                 duration: 3000,
                                 message: 'Bid created successfully!',
@@ -368,7 +369,7 @@ export default {
                         .then(() => {
                             this.isLoading = false
                             loadingSnackbar.close()
-                            this.$router.push("/auctions").catch(e => { console.log(e)})
+                            this.$router.push("/auctions").catch(e => { console.log(e) })
                         })
                 })
         },

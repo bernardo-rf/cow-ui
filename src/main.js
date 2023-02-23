@@ -18,6 +18,9 @@ localize("en", en);
 Vue.component("ValidationObserver", ValidationObserver);
 Vue.component("ValidationProvider", ValidationProvider);
 
+import VueCountdown from '@chenfengyuan/vue-countdown';
+Vue.component(VueCountdown.name, VueCountdown);
+
 window._ = require("lodash");
 window.axios = require("axios");
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
@@ -47,7 +50,9 @@ import {
   faPlus,
   faMinus,
   faMars,
-  faVenus
+  faVenus,
+  faWrench,
+  faStethoscope
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -70,7 +75,9 @@ library.add(
   faPlus,
   faMinus,
   faMars,
-  faVenus
+  faVenus,
+  faWrench,
+  faStethoscope,
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

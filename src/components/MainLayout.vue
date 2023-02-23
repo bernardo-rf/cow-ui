@@ -25,7 +25,7 @@
                         <b-navbar-item tag="router-link" to="/appointments">
                         Appointments
                         </b-navbar-item>
-                        <b-navbar-item tag="router-link" to="/newAppointment">
+                        <b-navbar-item v-if="user.type != 'VETERINARY'" tag="router-link" to="/newAppointment">
                             Create Appointment
                         </b-navbar-item>
                     </div>

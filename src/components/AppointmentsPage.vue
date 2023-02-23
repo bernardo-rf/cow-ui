@@ -13,7 +13,7 @@
                 <template v-else-if="currentAppointments.length == 0">
                     <div class="columns is-centered">
                         <div class="column is-12 has-text-right">
-                            <b-button icon-left="plus" type="is-dark" rounded tag="router-link" :to="'/newAppointment'">
+                            <b-button icon-right="plus" type="is-dark" rounded tag="router-link" :to="'/newAppointment'">
                                 Create
                             </b-button>
                         </div>
@@ -29,7 +29,7 @@
                     <template>
                         <div class="columns is-vcentered">
                             <div class="column is-12 has-text-right crud-button">
-                                <b-button icon-left="plus" type="is-dark" rounded tag="router-link"
+                                <b-button icon-right="plus" type="is-dark" rounded tag="router-link"
                                     :to="'/newAppointment'">Create
                                 </b-button>
                             </div>
@@ -40,43 +40,41 @@
                             :current-page.sync="currentPage" :pagination-simple="isPaginationSimple" detailed
                             detail-key="idAppointment" :detail-transition="transitionName"
                             :pagination-position="paginationPosition" aria-next-label="Next page"
-                            aria-previous-label="Previous page" aria-page-label="Page"
-                            aria-current-label="Current page">
+                            aria-previous-label="Previous page" aria-page-label="Page" aria-current-label="Current page">
 
-                            <template slot-scope="props">
-                                <b-table-column field="idAppointmentRequest" label="Appointment Request" sortable>
+                            <b-table-column field="idAppointmentRequest" label="Appointment Request" sortable>
+                                <template v-slot:default="props">
                                     <b-tag v-if="props.row.idAppointmentRequest == 0" type="is-dark">Without Request</b-tag>
                                     <b-tag v-if="props.row.idAppointmentRequest != 0" type="is-warning">With Request</b-tag>
-                                </b-table-column>
-                                <b-table-column field="appointmentDate" label="Date" sortable searchable>
-                                    <template slot="searchable" slot-scope="props">
-                                        <b-input v-model="props.filters[props.column.field]" placeholder="Search..."
-                                            icon="magnify" size="is-small" />
-                                    </template>
+                                </template>
+                            </b-table-column>
+                            <b-table-column field="appointmentDate" label="Date" sortable searchable>
+                                <template v-slot:default="props">
                                     {{ props.row.appointmentDate }}
-                                </b-table-column>
-                                <b-table-column field="bovineSerialNumber" label="Cow Serial Number" sortable
-                                    searchable>
-                                    <template slot="searchable" slot-scope="props">
-                                        <b-input v-model="props.filters[props.column.field]" placeholder="Search..."
-                                            icon="magnify" size="is-small" />
-                                    </template>
+                                </template>
+                            </b-table-column>
+                            <b-table-column field="bovineSerialNumber" label="Cow Serial Number" sortable searchable>
+                                <template v-slot:default="props">
                                     {{ props.row.bovineSerialNumber }}
-                                </b-table-column>
-                                <b-table-column field="cost" label="Cost" sortable searchable>
-                                    <template slot="searchable" slot-scope="props">
-                                        <b-input v-model="props.filters[props.column.field]" placeholder="Search..."
-                                            icon="magnify" size="is-small" />
-                                    </template>
+                                </template>
+                            </b-table-column>
+                            <b-table-column field="cost" label="Cost" sortable searchable>
+                                <template v-slot:default="props">
                                     {{ props.row.cost }}€
-                                </b-table-column>
-                                <b-table-column field="status" label="Status" sortable>
+                                </template>
+                            </b-table-column>
+                            <b-table-column field="status" label="Status" sortable>
+                                <template v-slot:default="props">
                                     <b-tag v-if="props.row.status == 0" type="is-dark">Waiting</b-tag>
                                     <b-tag v-if="props.row.status == 1" type="is-warning">Pending Payment</b-tag>
                                     <b-tag v-if="props.row.status == 2" type="is-success">Concluded</b-tag>
-                                </b-table-column>
-                                <b-table-column label="Actions" :visible="visibleValue">
+                                </template>
+                            </b-table-column>
+                            <b-table-column label="Actions" :visible="visibleValue">
+                                <template v-slot:default="props">
+
                                     <div class="columns">
+
                                         <div v-if="props.row.status == 0" class="column">
                                             <b-tooltip label="Close an appointment that already as been executed."
                                                 position="is-left" type="is-dark">
@@ -95,15 +93,14 @@
                                             </b-tooltip>
                                         </div>
                                         <div class="column">
-                                            <b-button icon-left="refresh" type="is-dark" size="is-small"
-                                                tag="router-link"
+                                            <b-button icon-left="wrench" type="is-dark" size="is-small" tag="router-link"
                                                 :to="'appointment/' + props.row.idAppointment + '/update'" rounded>
                                                 Update
                                             </b-button>
                                         </div>
                                     </div>
-                                </b-table-column>
-                            </template>
+                                </template>
+                            </b-table-column>
 
                             <template #detail="props">
                                 <article class="media">
@@ -127,9 +124,6 @@
                             </template>
                         </b-table>
                     </div>
-                    <template>
-
-                    </template>
                 </template>
             </div>
         </div>
@@ -157,51 +151,42 @@
                             :current-page.sync="currentPage" :pagination-simple="isPaginationSimple" detailed
                             detail-key="idAppointment" :detail-transition="transitionName"
                             :pagination-position="paginationPosition" aria-next-label="Next page"
-                            aria-previous-label="Previous page" aria-page-label="Page"
-                            aria-current-label="Current page">
+                            aria-previous-label="Previous page" aria-page-label="Page" aria-current-label="Current page">
 
-                            <template slot-scope="props">
-                                <b-table-column field="idAppointmentRequest" label="Appointment Request" sortable>
+                            <b-table-column field="idAppointmentRequest" label="Appointment Request" sortable>
+                                <template v-slot:default="props">
                                     <b-tag v-if="props.row.idAppointmentRequest == 0" type="is-dark">Without Request</b-tag>
                                     <b-tag v-if="props.row.idAppointmentRequest != 0" type="is-warning">With Request</b-tag>
-                                </b-table-column>
-                                <b-table-column field="appointmentType" label="Motive" sortable
-                                    searchable>
-                                    <template slot="searchable" slot-scope="props">
-                                        <b-input v-model="props.filters[props.column.field]" placeholder="Search..."
-                                            icon="magnify" size="is-small" />
-                                    </template>
-                                    {{props.row.appointmentType}}
-                                </b-table-column>
-                                <b-table-column field="appointmentDate" label="Date" sortable searchable>
-                                    <template slot="searchable" slot-scope="props">
-                                        <b-input v-model="props.filters[props.column.field]" placeholder="Search..."
-                                            icon="magnify" size="is-small" />
-                                    </template>
-                                    {{props.row.appointmentDate}}
-                                </b-table-column>
-                                <b-table-column field="bovineSerialNumber" label="Cow Serial Number" sortable
-                                    searchable>
-                                    <template slot="searchable" slot-scope="props">
-                                        <b-input v-model="props.filters[props.column.field]" placeholder="Search..."
-                                            icon="magnify" size="is-small" />
-                                    </template>
-                                    {{props.row.bovineSerialNumber}}
-                                </b-table-column>
-                                <b-table-column field="cost" label="Cost" sortable searchable>
-                                    <template slot="searchable" slot-scope="props">
-                                        <b-input v-model="props.filters[props.column.field]" placeholder="Search..."
-                                            icon="magnify" size="is-small" />
-                                    </template>
-                                    {{ props.row.cost}}€
-                                </b-table-column>
-                                <b-table-column field="status" label="Status" sortable>
+                                </template>
+                            </b-table-column>
+                            <b-table-column field="appointmentType" label="Motive" sortable searchable>
+                                <template v-slot:default="props">
+                                    {{ props.row.appointmentType }}
+                                </template>
+                            </b-table-column>
+                            <b-table-column field="appointmentDate" label="Date" sortable searchable>
+                                <template v-slot:default="props">
+                                    {{ props.row.appointmentDate }}
+                                </template>
+                            </b-table-column>
+                            <b-table-column field="bovineSerialNumber" label="Cow Serial Number" sortable searchable>
+                                <template v-slot:default="props">
+                                    {{ props.row.bovineSerialNumber }}
+                                </template>
+                            </b-table-column>
+                            <b-table-column field="cost" label="Cost" sortable searchable>
+                                <template v-slot:default="props">
+                                    {{ props.row.cost }}€
+                                </template>
+                            </b-table-column>
+                            <b-table-column field="status" label="Status" sortable>
+                                <template v-slot:default="props">
                                     <b-tag v-if="props.row.status == 0" type="is-dark">Waiting</b-tag>
                                     <b-tag v-if="props.row.status == 1" type="is-warning">Pending Payment</b-tag>
-                                    <b-tag v-if="props.row.status == 2" type="is-success">Concluded
-                                    </b-tag>
-                                </b-table-column>
-                            </template>
+                                    <b-tag v-if="props.row.status == 2" type="is-success">Concluded</b-tag>
+                                </template>
+
+                            </b-table-column>
 
                             <template #detail="props">
                                 <article class="media">
@@ -223,6 +208,7 @@
                                     </div>
                                 </article>
                             </template>
+
                         </b-table>
                     </div>
                 </template>
@@ -253,10 +239,10 @@ export default {
         transitionName() {
             if (this.useTransition) {
                 return 'fade'
-            }else {
+            } else {
                 return ''
             }
-            
+
         }
     },
     methods: {
@@ -270,11 +256,11 @@ export default {
             } else {
                 url = `${process.env.VUE_APP_API_URL}appointment/bovines/${this.$parent.user.idWallet}`
             }
-            
+
             axios.get(url) // eslint-disable-line
                 .then(response => {
                     var appointments = response.data
-                    
+
                     appointments.forEach(appointment => {
                         appointment.appointmentDate = toDateTime(appointment.appointmentDate)
                         appointment.cost = appointment.cost.toString()
@@ -301,7 +287,7 @@ export default {
             })
 
             axios.put(`${process.env.VUE_APP_API_URL}appointment/${id}/status?status=${status}`) // eslint-disable-line
-                .then( () => {
+                .then(() => {
                     this.getAppointments()
                 })
                 .catch(error => {

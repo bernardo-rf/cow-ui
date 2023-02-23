@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="columns">
-            <div class="column is-6">
+            <div v-if="user.type != 'VETERINARY'" class="column is-6">
                 <div class="title is-3">
                     <strong>Total Cows Own</strong>
                 </div>
@@ -108,6 +108,7 @@ export default {
     data() {
         return {
             title: "Dashboard",
+            user: this.$store.getters.user,
             cows: [],
             cowsLabels: [],
             cowsColors: [],
