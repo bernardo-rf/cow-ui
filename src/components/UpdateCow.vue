@@ -155,7 +155,7 @@
 														:type="getValidationState(validationContext)"
 														:message="validationContext.errors[0]">
 														<b-switch v-model="cow.gender" type="is-dark">
-															{{ cow.gender ? 'Cow gender set as Masculine' : "Cow gender set as Feminine"}}
+															{{ cow.gender ? 'Cow gender set as Masculine.' : "Cow gender set as Feminine."}}
 														</b-switch>
 													</b-field>
 												</validation-provider>
@@ -167,7 +167,7 @@
 														:type="getValidationState(validationContext)"
 														:message="validationContext.errors[0]">
 														<b-switch v-model="cow.active" type="is-dark">
-															{{ cow.active ? 'Cow can be sold' : "Cow can't be sold" }}
+															{{ cow.active ? 'Cow can be sold.' : "Cow can't be sold." }}
 														</b-switch>
 													</b-field>
 												</validation-provider>

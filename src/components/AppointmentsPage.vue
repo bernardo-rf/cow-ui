@@ -27,7 +27,7 @@
                 </template>
                 <template v-else>
                     <template>
-                        <div class="columns is-vcentered">
+                        <div v-if="user.type == 'VETERINARY'" class="columns is-vcentered">
                             <div class="column is-12 has-text-right crud-button">
                                 <b-button icon-right="plus" type="is-dark" rounded tag="router-link"
                                     :to="'/newAppointment'">Create
@@ -70,16 +70,14 @@
                                     <b-tag v-if="props.row.status == 2" type="is-success">Concluded</b-tag>
                                 </template>
                             </b-table-column>
-                            <b-table-column label="Actions" :visible="visibleValue">
+                            <b-table-column v-if="user.type == 'VETERINARY'" label="Actions" :visible="visibleValue">
                                 <template v-slot:default="props">
-
                                     <div class="columns">
-
                                         <div v-if="props.row.status == 0" class="column">
                                             <b-tooltip label="Close an appointment that already as been executed."
                                                 position="is-left" type="is-dark">
                                                 <b-button @click="updateStatus(1, props.row.idAppointment)"
-                                                    icon-left="check" type="is-warning" size="is-small" rounded>Close
+                                                    icon-right="check" type="is-warning" size="is-small" rounded>Close
                                                 </b-button>
                                             </b-tooltip>
                                         </div>
@@ -87,13 +85,13 @@
                                             <b-tooltip label="Conclude an appointment that already as been paid."
                                                 position="is-left" type="is-dark">
                                                 <b-button @click="updateStatus(2, props.row.idAppointment)"
-                                                    icon-left="close" type="is-success" size="is-small" rounded>
+                                                    icon-right="close" type="is-success" size="is-small" rounded>
                                                     Concluded
                                                 </b-button>
                                             </b-tooltip>
                                         </div>
                                         <div class="column">
-                                            <b-button icon-left="wrench" type="is-dark" size="is-small" tag="router-link"
+                                            <b-button icon-right="wrench" type="is-dark" size="is-small" tag="router-link"
                                                 :to="'appointment/' + props.row.idAppointment + '/update'" rounded>
                                                 Update
                                             </b-button>
@@ -223,6 +221,7 @@ export default {
     data() {
         return {
             title: "Appointments",
+            user: this.$store.getters.user,
             currentAppointments: [],
             pastAppointments: [],
             status: 0,
