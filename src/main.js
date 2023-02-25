@@ -52,7 +52,9 @@ import {
   faMars,
   faVenus,
   faWrench,
-  faStethoscope
+  faStethoscope,
+  faCheck,
+  faClose
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -78,6 +80,8 @@ library.add(
   faVenus,
   faWrench,
   faStethoscope,
+  faCheck,
+  faClose
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

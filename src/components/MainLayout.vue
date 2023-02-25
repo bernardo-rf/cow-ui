@@ -21,11 +21,11 @@
                     </b-navbar-dropdown>
                 </template>
                 <b-navbar-dropdown label="Appointments" type="is-dark">
-                    <div v-if="user.type == 'VETERINARY'">
+                    <div>
                         <b-navbar-item tag="router-link" to="/appointments">
-                        Appointments
+                            Appointments
                         </b-navbar-item>
-                        <b-navbar-item v-if="user.type != 'VETERINARY'" tag="router-link" to="/newAppointment">
+                        <b-navbar-item v-if="user.type == 'VETERINARY'" tag="router-link" to="/newAppointment">
                             Create Appointment
                         </b-navbar-item>
                     </div>

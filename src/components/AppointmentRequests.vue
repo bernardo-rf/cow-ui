@@ -69,12 +69,12 @@
                                     <div v-if="props.row.status == 0" class="columns">
                                         <div v-if="$parent.user.type == 'VETERINARY'" class="column">
                                             <b-button @click="updateStatus(1, props.row.idAppointmentRequest)"
-                                                icon-left="check" type="is-success" size="is-small" rounded>Accept
+                                                icon-right="check" type="is-success" size="is-small" rounded>Accept
                                             </b-button>
                                         </div>
                                         <div v-if="$parent.user.type == 'VETERINARY'" class="column">
                                             <b-button @click="updateStatus(2, props.row.idAppointmentRequest)"
-                                                icon-left="close" type="is-danger" size="is-small" rounded>Cancel
+                                                icon-right="close" type="is-danger" size="is-small" rounded>Cancel
                                             </b-button>
                                         </div>
                                         <div v-if="$parent.user.type != 'VETERINARY'" class="column">
