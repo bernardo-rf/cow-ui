@@ -12,11 +12,12 @@
                 <template v-else>
                     <div class="columns is-vcentered">
                         <div class="column is-6">
-                            <span class="is-size-3 mr-2">{{field.fieldDescription}}</span>
+                            <span class="is-size-3 mr-2">{{ field.fieldDescription }}</span>
                         </div>
                         <template>
                             <div class="column is-6 has-text-right crud-button">
-                                <b-button icon-right="wrench" class="mr-2" type="is-dark" rounded tag="router-link" :to="'/field/' + field.idField + '/update'">Update</b-button>
+                                <b-button icon-right="wrench" class="mr-2" type="is-dark" rounded tag="router-link"
+                                    :to="'/field/' + field.idField + '/update'">Update</b-button>
                             </div>
                         </template>
                     </div>
@@ -24,53 +25,62 @@
                         <div class="column is-12">
                             <b-tabs v-model="activeTab" expanded>
                                 <b-tab-item label="Informations">
-                                   <div class="card">
+                                    <div class="card">
                                         <div class="card-content">
                                             <div class="columns">
                                                 <div class="column is-4">
-                                                    <span class="has-text-weight-bold">Description: </span> {{field.fieldDescription}}
+                                                    <span class="has-text-weight-bold">Description: </span>
+                                                    {{ field.fieldDescription }}
                                                 </div>
                                                 <div class="column is-8">
-                                                    <span class="has-text-weight-bold">Address:</span> {{field.address}}
+                                                    <span class="has-text-weight-bold">Address:</span> {{ field.address }}
                                                 </div>
                                             </div>
-                                            <hr/>
+                                            <hr />
                                             <div class="columns">
                                                 <div class="column is-4">
-                                                    <span class="has-text-weight-bold">Latitude: </span> {{ field.latitude }}
+                                                    <span class="has-text-weight-bold">Latitude: </span> {{ field.latitude
+                                                    }}
                                                 </div>
                                                 <div class="column is-8">
-                                                    <span class="has-text-weight-bold">Longitude: </span> {{ field.longitude }}
+                                                    <span class="has-text-weight-bold">Longitude: </span> {{ field.longitude
+                                                    }}
                                                 </div>
                                             </div>
-                                            <hr/>
+                                            <hr />
                                             <div class="columns">
                                                 <div class="column is-4">
-                                                    <span class="has-text-weight-bold">Max Ocuppation:</span> {{field.limit}}
+                                                    <span class="has-text-weight-bold">Max Ocuppation:</span>
+                                                    {{ field.limit }}
                                                 </div>
                                                 <div class="column is-3">
-                                                    <span class="has-text-weight-bold">Current Occupation:</span> {{field.currentOccupation}}/{{field.limit}}
+                                                    <span class="has-text-weight-bold">Current Occupation:</span>
+                                                    {{ field.currentOccupation }}/{{ field.limit }}
                                                 </div>
                                                 <div class="column is-5">
-                                                    <b-progress id="progress_bar" :type="field.currentOccupationPercentage <= 20 ? 'is-success' : field.currentOccupationPercentage <= 75 ? 'is-warning' : 'is-danger'" :value="field.currentOccupationPercentage" show-value format="percent"></b-progress>
+                                                    <b-progress id="progress_bar"
+                                                        :type="field.currentOccupationPercentage <= 20 ? 'is-success' : field.currentOccupationPercentage <= 75 ? 'is-warning' : 'is-danger'"
+                                                        :value="field.currentOccupationPercentage" show-value
+                                                        format="percent"></b-progress>
                                                 </div>
                                             </div>
                                             <div v-if="field.observation">
-                                            <hr/>
-                                            <div  class="columns">
-                                                <div class="column is-12">
-                                                    <br/>
-                                                    <span class="has-text-weight-bold">Observation: </span> {{field.observation}}
+                                                <hr />
+                                                <div class="columns">
+                                                    <div class="column is-12">
+                                                        <br />
+                                                        <span class="has-text-weight-bold">Observation: </span>
+                                                        {{ field.observation }}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>    
-                                <br/>
+                                    <br />
                                 </b-tab-item>
                                 <b-tab-item :label="'Current Cows (' + cows.length + ')'">
                                     <template v-if="cows.length == 0">
-                                        <br/>
+                                        <br />
                                         <div class="columns is-centered">
                                             <div class="column is-12 has-text-centered">
                                                 <span class="has-text-weight-bold"> This field don't have any cows. </span>
@@ -83,31 +93,39 @@
                                                 <div class="columns is-vcentered">
                                                     <div class="column is-2">
                                                         <figure class="image is-64x64 is-horizontal-center is-vcentered">
-                                                            <img class="thumbnail-layout image is-rounded" :src="cow.imageCID == '' ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID"  :title="cow.SerialNumber">
+                                                            <img class="thumbnail-layout image is-rounded"
+                                                                :src="cow.imageCID == '' ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID"
+                                                                :title="cow.SerialNumber">
                                                         </figure>
                                                     </div>
                                                     <div class="column is-2">
-                                                        <span class="has-text-weight-bold">Serial Number: </span> {{cow.serialNumber}}
+                                                        <span class="has-text-weight-bold">Serial Number: </span>
+                                                        {{ cow.serialNumber }}
                                                     </div>
                                                     <div class="column is-2">
-                                                        <span class="has-text-weight-bold">Birth Date: </span> {{cow.birthDate}}
+                                                        <span class="has-text-weight-bold">Birth Date: </span>
+                                                        {{ cow.birthDate }}
                                                     </div>
                                                     <div class="column is-2">
-                                                        <span class="has-text-weight-bold">Color: </span> {{cow.color}}
+                                                        <span class="has-text-weight-bold">Color: </span> {{ cow.color }}
                                                     </div>
                                                     <div class="column is-2">
-                                                        <span class="has-text-weight-bold">Breed: </span> {{cow.breed}}
+                                                        <span class="has-text-weight-bold">Breed: </span> {{ cow.breed }}
                                                     </div>
                                                     <div class="column is-2 has-text-right">
-                                                        <b-button class="has-text-right" tag="router-link" :to="'/cow/' + cow.idBovine" rounded type="is-dark">Open</b-button>
+                                                        <b-button class="has-text-right" tag="router-link"
+                                                            :to="'/cow/' + cow.idBovine" rounded
+                                                            type="is-dark">Open</b-button>
                                                     </div>
                                                 </div>
                                                 <div class="columns is-vcentered">
                                                     <div class="column is-2 has-text-centered ">
-                                                        <router-link :to="'/cow/' + cow.idBovine"><span class="is-size-5">{{cow.serialNumber}}</span></router-link>
+                                                        <router-link :to="'/cow/' + cow.idBovine"><span class="is-size-5">{{
+                                                            cow.serialNumber }}</span></router-link>
                                                     </div>
                                                     <div class="column is-10">
-                                                        <span class="has-text-weight-bold">Location: </span> {{field.address}}
+                                                        <span class="has-text-weight-bold">Location: </span>
+                                                        {{ field.address }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -119,10 +137,11 @@
                                         <l-map ref="map" :zoom="zoom" :center="center">
                                             <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
                                             <l-marker :lat-lng="[field.latitude, field.longitude]">
-                                                <l-popup>{{cowsCount}}</l-popup>
-                                                <l-icon :icon-size="[32,32]"  :icon-url="require('../assets/img/icon.png')"></l-icon>
+                                                <l-popup>{{ cowsCount }}</l-popup>
+                                                <l-icon :icon-size="[32, 32]"
+                                                    :icon-url="require('../assets/img/icon.png')"></l-icon>
                                             </l-marker>
-                                            <l-circle :lat-lng="[field.latitude, field.longitude ]" :radius="500">
+                                            <l-circle :lat-lng="[field.latitude, field.longitude]" :radius="500">
                                                 <l-popup :content=cowsCount />
                                             </l-circle>
                                         </l-map>
@@ -145,12 +164,12 @@ import { toDate } from '../helpers.js'
 
 delete Icon.Default.prototype._getIconUrl;
 Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+    iconUrl: require('leaflet/dist/images/marker-icon.png'),
+    shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
 
-export default{
+export default {
     components: {
         LMap,
         LTileLayer,
@@ -159,17 +178,17 @@ export default{
         LPopup,
         LIcon
     },
-    data(){
-        return{
+    data() {
+        return {
             title: "Field",
             fieldId: this.$route.params.fieldId,
             field: {},
             cows: [],
-            cow:{},
+            cow: {},
             isLoading: true,
             activeTab: 0,
             url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            attribution:'&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+            attribution: '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
             zoom: 15,
             center: [0, 0],
             myMap: {},
@@ -177,44 +196,44 @@ export default{
         }
     },
     methods: {
-        getField(){
+        getField() {
             axios.get(`${process.env.VUE_APP_API_URL}fields/${this.fieldId}`) // eslint-disable-line
-            .then(response => {
-                this.field = response.data
-                this.center = [this.field.latitude, this.field.longitude];
-
-                axios.get(`${process.env.VUE_APP_API_URL}fields/bovines/${this.fieldId}`) // eslint-disable-line
                 .then(response => {
-                    var responseData = response.data
-                    this.cows = responseData.bovines
-                    this.cows.forEach(cow => {
-                       cow.birthDate = toDate(cow.birthDate) 
-                    })
-                    this.cowsCount = "Currently are "+ this.cows.length + " cows in this field."
-                    this.isLoading = false
+                    this.field = response.data
+                    this.center = [this.field.latitude, this.field.longitude];
+
+                    axios.get(`${process.env.VUE_APP_API_URL}fields/${this.fieldId}/bovines`) // eslint-disable-line
+                        .then(response => {
+                            var responseData = response.data
+                            this.cows = responseData.bovines
+                            this.cows.forEach(cow => {
+                                cow.birthDate = toDate(cow.birthDate)
+                            })
+                            this.cowsCount = "Currently are " + this.cows.length + " cows in this field."
+                            this.isLoading = false
+                        })
+                        .catch(error => {
+                            console.log(error)
+                            if (error.response.status == 404) {
+                                this.$router.push("/*")
+                            }
+                        })
                 })
                 .catch(error => {
                     console.log(error)
-                    if(error.response.status == 404){
+                    if (error.response.status == 404) {
                         this.$router.push("/*")
                     }
                 })
-            })
-            .catch(error => {
-                console.log(error)
-                if(error.response.status == 404){
-                    this.$router.push("/*")
-                }
-            })
         }
     },
     created() {
-        this.$emit('title',this.title)
+        this.$emit('title', this.title)
     },
-    mounted(){
+    mounted() {
         this.getField();
     },
-    updated(){
+    updated() {
         this.myMap = this.$refs.map.mapObject
         this.myMap.invalidateSize()
     }

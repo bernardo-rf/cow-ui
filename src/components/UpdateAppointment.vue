@@ -36,8 +36,8 @@
                                                         :message="validationContext.errors[0]">
                                                         <template slot="label">Veterinary <span
                                                                 class="has-text-danger">*</span></template>
-                                                        <b-select v-model="idVeterinary"
-                                                            placeholder="Select a Veterinary" expanded>
+                                                        <b-select v-model="idVeterinary" placeholder="Select a Veterinary"
+                                                            expanded>
                                                             <option v-for="user in veterinaries" :value="user.idUser"
                                                                 :key="user.idUser">
                                                                 {{ user.name }}
@@ -54,8 +54,9 @@
                                                         <template slot="label">Appointment Date <span
                                                                 class="has-text-danger">*</span></template>
                                                         <b-datetimepicker v-model="appointment.appointmentDate"
-                                                            placeholder="Click to select..." 
-                                                            :datepicker="{ showWeekNumber }" :min-datetime="appointment.appointmentDate"
+                                                            placeholder="Click to select..."
+                                                            :datepicker="{ showWeekNumber }"
+                                                            :min-datetime="appointment.appointmentDate"
                                                             :timepicker="{ enableSeconds, hourFormat: format }"
                                                             horizontal-time-picker>
                                                         </b-datetimepicker>
@@ -72,8 +73,8 @@
                                                 }" name="Cost" v-slot="validationContext">
                                                     <b-field label="Cost" :type="getValidationState(validationContext)"
                                                         :message="validationContext.errors[0]">
-                                                        <b-input v-model="appointment.cost"
-                                                            :placeholder=appointment.cost type="decimal">
+                                                        <b-input v-model="appointment.cost" :placeholder=appointment.cost
+                                                            type="decimal">
                                                         </b-input>
                                                     </b-field>
                                                 </validation-provider>
@@ -85,8 +86,8 @@
                                                         :message="validationContext.errors[0]">
                                                         <template slot="label">Status <span
                                                                 class="has-text-danger">*</span></template>
-                                                        <b-select v-model="appointment.status"
-                                                            placeholder="Select a Status" expanded>
+                                                        <b-select v-model="appointment.status" placeholder="Select a Status"
+                                                            expanded>
                                                             <option value="0">Waiting</option>
                                                             <option value="1">Pending Payment</option>
                                                             <option value="2">Conclude</option>
@@ -113,9 +114,10 @@
                                                 <div class="card-content pt-0 mb-0">
                                                     <div class="columns is-vcentered">
                                                         <div class="column is-2">
-                                                            <figure class="image is-64x64 is-horizontal-center is-vcentered">
-                                                                <img class="thumbnail-layout image is-rounded" 
-                                                                    :src="cow.imageCID == ''  ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID"
+                                                            <figure
+                                                                class="image is-64x64 is-horizontal-center is-vcentered">
+                                                                <img class="thumbnail-layout image is-rounded"
+                                                                    :src="cow.imageCID == '' ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID"
                                                                     :title="cow.SerialNumber">
                                                             </figure>
                                                         </div>
@@ -214,7 +216,7 @@ export default {
                         }
                     })
 
-                    axios.get(`${process.env.VUE_APP_API_URL}appointment/${this.$route.params.appointmentId}`) // eslint-disable-line
+                    axios.get(`${process.env.VUE_APP_API_URL}appointments/${this.$route.params.appointmentId}`) // eslint-disable-line
                         .then(response => {
                             this.appointment = response.data
                             this.appointment.appointmentDate = new Date(this.appointment.appointmentDate)
@@ -252,12 +254,12 @@ export default {
                 .then(result => {
                     this.isLoading = true
                     const loadingSnackbar = this.$buefy.snackbar.open({
-						message: 'Writing to blockchain. This might take some time...',
-						position: 'is-bottom-left',
-						type: 'is-warning',
-						indefinite: true
-                        
-					})
+                        message: 'Writing to blockchain. This might take some time...',
+                        position: 'is-bottom-left',
+                        type: 'is-warning',
+                        indefinite: true
+
+                    })
 
                     if (!result) {
                         this.$buefy.snackbar.open({
@@ -276,7 +278,7 @@ export default {
                         return
                     }
 
-                    axios.put(`${process.env.VUE_APP_API_URL}appointment/${this.$route.params.appointmentId}`, { // eslint-disable-line
+                    axios.put(`${process.env.VUE_APP_API_URL}appointments/${this.$route.params.appointmentId}`, { // eslint-disable-line
                         "idAppointment": this.appointment.idAppointment,
                         "idAppointmentRequest": this.appointment.idAppointmenRequest,
                         "idContract": this.appointment.idContract,
@@ -301,7 +303,7 @@ export default {
                         .then(() => {
                             this.isLoading = false
                             loadingSnackbar.close()
-                            this.$router.push("/appointments").catch(e => { console.log(e)})
+                            this.$router.push("/appointments").catch(e => { console.log(e) })
                         })
                 })
         }

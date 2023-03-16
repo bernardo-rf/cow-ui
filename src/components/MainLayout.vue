@@ -75,8 +75,8 @@
         <div class="section">
             <div class="container main pt-0 mb-1">
                 <div class="is-flex is-vcentered mb-1">
-                    <b-button class="mt-3 mr-3" v-if="backRedirect" tag="router-link"
-                        :to="backRedirect" rounded type="is-info" size="is-small" icon-left="arrow-left"></b-button>
+                    <b-button class="mt-3 mr-3" v-if="backRedirect" tag="router-link" :to="backRedirect" rounded
+                        type="is-info" size="is-small" icon-left="arrow-left"></b-button>
                     <h1 class="title is-1">
                         {{ title }}
                     </h1>
@@ -87,7 +87,8 @@
         <footer class="footer volby-footer mt-1">
             <div class="columns is-vcentered has-text-centered">
                 <div class="column is-3">
-                    <img class="image is-horizontal-center" width="50%" :src="require('../assets/img/credits_ipleiria.png')" />
+                    <img class="image is-horizontal-center" width="50%"
+                        :src="require('../assets/img/credits_ipleiria.png')" />
                 </div>
                 <div class="column is-6">
                     <p>Copyright © 2022 Bernardo Figueiredo @ IPLeiria.</p>
@@ -119,7 +120,7 @@ export default {
             this.backRedirect = redirect
         },
         profile() {
-            this.$router.push("/profile").catch(e => { console.log(e)})
+            this.$router.push("/profile").catch(e => { console.log(e) })
         },
         logout() {
             this.$store.commit('logout')

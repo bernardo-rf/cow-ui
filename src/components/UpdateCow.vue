@@ -45,8 +45,7 @@
 														:message="validationContext.errors[0]">
 														<template slot="label">Serial Number <span
 																class="has-text-danger">*</span></template>
-														<b-numberinput v-model="cow.serialNumber" min="1"
-															:controls="false">
+														<b-numberinput v-model="cow.serialNumber" min="1" :controls="false">
 														</b-numberinput>
 													</b-field>
 												</validation-provider>
@@ -59,7 +58,7 @@
 														<template slot="label">Birth Date <span
 																class="has-text-danger">*</span></template>
 														<b-datetimepicker v-model="cow.birthDate"
-															placeholder="Click to select..." 
+															placeholder="Click to select..."
 															:datepicker="{ showWeekNumber }" horizontal-time-picker>
 														</b-datetimepicker>
 													</b-field>
@@ -100,8 +99,8 @@
 										</div>
 										<div class="columns">
 											<div class="column is-6">
-												<validation-provider vid="breed" rules="required|alpha_spaces|max:50" name="Breed"
-													v-slot="validationContext">
+												<validation-provider vid="breed" rules="required|alpha_spaces|max:50"
+													name="Breed" v-slot="validationContext">
 													<b-field :type="getValidationState(validationContext)"
 														:message="validationContext.errors[0]">
 														<template slot="label">Breed <span
@@ -111,8 +110,8 @@
 												</validation-provider>
 											</div>
 											<div class="column is-6">
-												<validation-provider vid="color" rules="required|alpha_spaces|max:50" name="Color"
-													v-slot="validationContext">
+												<validation-provider vid="color" rules="required|alpha_spaces|max:50"
+													name="Color" v-slot="validationContext">
 													<b-field :type="getValidationState(validationContext)"
 														:message="validationContext.errors[0]">
 														<template slot="label">Color <span
@@ -129,9 +128,9 @@
 													<b-field rounded label="Current Field"
 														:type="getValidationState(validationContext)"
 														:message="validationContext.errors[0]">
-														<b-select v-model="idField" placeholder="Select a cow"
-															expanded>
-															<option v-for="field in fields" :value="field.idField" :key="field.id">
+														<b-select v-model="idField" placeholder="Select a cow" expanded>
+															<option v-for="field in fields" :value="field.idField"
+																:key="field.id">
 																{{ field.fieldDescription + ' - ' + field.address }}
 															</option>
 														</b-select>
@@ -151,11 +150,11 @@
 											<div class="column">
 												<validation-provider vid="gender" rules="required" name="Gender"
 													v-slot="validationContext">
-													<b-field label="Gender"
-														:type="getValidationState(validationContext)"
+													<b-field label="Gender" :type="getValidationState(validationContext)"
 														:message="validationContext.errors[0]">
 														<b-switch v-model="cow.gender" type="is-dark">
-															{{ cow.gender ? 'Cow gender set as Masculine.' : "Cow gender set as Feminine."}}
+															{{ cow.gender ? 'Cow gender set as Masculine.' :
+																"Cow gender set as Feminine." }}
 														</b-switch>
 													</b-field>
 												</validation-provider>
@@ -163,8 +162,7 @@
 											<div class="column">
 												<validation-provider vid="active" rules="required" name="Active"
 													v-slot="validationContext">
-													<b-field label="Active"
-														:type="getValidationState(validationContext)"
+													<b-field label="Active" :type="getValidationState(validationContext)"
 														:message="validationContext.errors[0]">
 														<b-switch v-model="cow.active" type="is-dark">
 															{{ cow.active ? 'Cow can be sold.' : "Cow can't be sold." }}
@@ -197,15 +195,15 @@
 														<b-icon pack="fas" icon="mars"></b-icon>
 														<span class="has-text-weight-bold">Parent 1: </span> <span
 															class="has-text-danger">*</span>
-														<validation-provider vid="parent1" rules="required"
-															name="Parent1" v-slot="validationContext">
+														<validation-provider vid="parent1" rules="required" name="Parent1"
+															v-slot="validationContext">
 															<b-field :type="getValidationState(validationContext)"
 																:message="validationContext.errors[0]">
 																<b-select v-model="cow.idBovineParent1"
 																	placeholder="Select a cow" expanded
 																	:disabled="cowsMale.length != 0 ? false : true">
-																	<option v-for="cow in cowsMale"
-																		:value="cow.idBovine" :key="cow.idBovine">
+																	<option v-for="cow in cowsMale" :value="cow.idBovine"
+																		:key="cow.idBovine">
 																		{{ cow.serialNumber }}
 																	</option>
 																</b-select>
@@ -240,8 +238,7 @@
 											</b-button>
 										</b-field>
 										<b-field class="is-pulled-right">
-											<b-button type="is-dark" rounded :loading="isLoading"
-												@click.prevent="submit">
+											<b-button type="is-dark" rounded :loading="isLoading" @click.prevent="submit">
 												Submit</b-button>
 										</b-field>
 									</b-tab-item>
@@ -344,7 +341,7 @@ export default {
 								}
 							})
 
-							axios.get(`${process.env.VUE_APP_API_URL}fields/${this.$parent.user.idWallet}/not_occupied`) // eslint-disable-line
+							axios.get(`${process.env.VUE_APP_API_URL}fields/${this.$parent.user.idWallet}/not-occupied`) // eslint-disable-line
 								.then(response => {
 									this.fields = response.data
 									this.isLoadingPanel = false

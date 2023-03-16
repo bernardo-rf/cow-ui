@@ -53,10 +53,10 @@
                                                         :message="validationContext.errors[0]">
                                                         <template slot="label">Appointment Date <span
                                                                 class="has-text-danger">*</span></template>
-                                                        <b-datetimepicker
-                                                            v-model="appointmentRequest.appointmentDate"
-                                                            placeholder="Click to select..." 
-                                                            :datepicker="{ showWeekNumber }" :min-datetime="appointmentRequest.appointmentDate"
+                                                        <b-datetimepicker v-model="appointmentRequest.appointmentDate"
+                                                            placeholder="Click to select..."
+                                                            :datepicker="{ showWeekNumber }"
+                                                            :min-datetime="appointmentRequest.appointmentDate"
                                                             :timepicker="{ enableSeconds, hourFormat: format }"
                                                             horizontal-time-picker>
                                                         </b-datetimepicker>
@@ -103,7 +103,7 @@
                                                 <div class="columns is-vcentered">
                                                     <div class="column is-2">
                                                         <figure class="image is-64x64 is-horizontal-center is-vcentered">
-                                                            <img class="thumbnail-layout image is-rounded" 
+                                                            <img class="thumbnail-layout image is-rounded"
                                                                 :src="cow.imageCID == '' ? require('../assets/img/blank_cow_image.png') : 'https://gateway.pinata.cloud/ipfs/' + cow.imageCID"
                                                                 :title="cow.SerialNumber">
                                                         </figure>
@@ -127,10 +127,9 @@
                                                 </div>
                                                 <div class="columns is-vcentered">
                                                     <div class="column is-2 has-text-centered ">
-                                                        <router-link :to="'/cow/' + cow.idBovine"><span
-                                                                class="is-size-5">{{
-                                                                        cow.serialNumber
-                                                                }}</span>
+                                                        <router-link :to="'/cow/' + cow.idBovine"><span class="is-size-5">{{
+                                                            cow.serialNumber
+                                                        }}</span>
                                                         </router-link>
                                                     </div>
                                                     <div class="column is-10">
@@ -159,7 +158,7 @@
 </template>
 
 <script>
-import {toDate} from '../helpers.js'
+import { toDate } from '../helpers.js'
 
 export default {
     data() {
@@ -184,7 +183,7 @@ export default {
             return dirty || validated ? (valid ? "" : "is-danger") : "";
         },
         getAppointmentRequest() {
-            axios.get(`${process.env.VUE_APP_API_URL}appointmentRequest/` + this.$route.params.AppointmentRequestId) // eslint-disable-line
+            axios.get(`${process.env.VUE_APP_API_URL}appointmentsRequest/` + this.$route.params.AppointmentRequestId) // eslint-disable-line
                 .then(response => {
                     this.appointmentRequest = response.data
 
@@ -245,7 +244,7 @@ export default {
                         return
                     }
 
-                    axios.put(`${process.env.VUE_APP_API_URL}appointmentRequest/${this.$route.params.AppointmentRequestId}`, { // eslint-disable-line
+                    axios.put(`${process.env.VUE_APP_API_URL}appointmentsRequest/${this.$route.params.AppointmentRequestId}`, { // eslint-disable-line
                         "idAppointmentRequest": this.$route.params.AppointmentRequestId,
                         "idUser": this.appointmentRequest.idUser,
                         "idUserRequest": this.appointmentRequest.idUserRequest,
