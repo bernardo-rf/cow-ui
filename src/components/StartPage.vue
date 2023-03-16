@@ -151,9 +151,9 @@ export default {
 
                     var url = ""
                     if (this.$parent.user.type == 'VETERINARY') {
-                        url = `${process.env.VUE_APP_API_URL}appointment/user/${this.$parent.user.idUser}`
+                        url = `${process.env.VUE_APP_API_URL}appointments/user/${this.$parent.user.idUser}`
                     } else {
-                        url = `${process.env.VUE_APP_API_URL}appointment/bovines/${this.$parent.user.idWallet}`
+                        url = `${process.env.VUE_APP_API_URL}appointments/bovines/${this.$parent.user.idWallet}`
                     }
                     axios.get(url) // eslint-disable-line
                         .then(response => {

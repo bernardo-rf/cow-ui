@@ -18,9 +18,11 @@
                             <div class="column is-6 has-text-right">
                                 <b-button icon-right="stethoscope" class="mr-2" type="is-warning" rounded tag="router-link"
                                     :to="`/newAppointmentRequest/${cow.idBovine}`">Request Appointment</b-button>
-                                <b-button icon-right="money-bill-transfer" class="mr-2" type="is-success" rounded tag="router-link" :to="`/newAuction`">
+                                <b-button icon-right="money-bill-transfer" class="mr-2" type="is-success" rounded
+                                    tag="router-link" :to="`/newAuction`">
                                     Sell</b-button>
-                                <b-button icon-right="wrench" class="mr-2" type="is-dark" rounded tag="router-link" :to="`/cow/${cow.idBovine}/update`">
+                                <b-button icon-right="wrench" class="mr-2" type="is-dark" rounded tag="router-link"
+                                    :to="`/cow/${cow.idBovine}/update`">
                                     Update</b-button>
                             </div>
                         </template>
@@ -85,9 +87,8 @@
                                                         <div class="column is-4">
                                                             <span class="has-text-weight-bold">Weight:</span>
                                                             {{ cow.weight }} Kg
-                                                            <b-tag v-if="isTag1Active"
-                                                                :type="getWeightInfortmation(cow)" rounded closable
-                                                                @close="isTag1Active = false"
+                                                            <b-tag v-if="isTag1Active" :type="getWeightInfortmation(cow)"
+                                                                rounded closable @close="isTag1Active = false"
                                                                 aria-close-label="Close tag">
                                                                 {{ this.weightNote }}
                                                             </b-tag>
@@ -95,9 +96,8 @@
                                                         <div class="column is-8">
                                                             <span class="has-text-weight-bold">Height:</span>
                                                             {{ cow.height }} m
-                                                            <b-tag v-if="isTag2Active"
-                                                                :type="getHeightInfortmation(cow)" rounded closable
-                                                                @close="isTag2Active = false"
+                                                            <b-tag v-if="isTag2Active" :type="getHeightInfortmation(cow)"
+                                                                rounded closable @close="isTag2Active = false"
                                                                 aria-close-label="Close tag">
                                                                 {{ this.heightNote }}
                                                             </b-tag>
@@ -181,10 +181,9 @@
                                             <div class="card">
                                                 <div class="card-content">
                                                     <div v-for="history in fieldsHistory" :key="history.id">
-                                                        <vue-timeline-update :date="history.datePast"
-                                                            :title="history.title"
-                                                            :description="history.descriptionTimeline"
-                                                            category="Relocation" icon="code" color="black" />
+                                                        <vue-timeline-update :date="history.datePast" :title="history.title"
+                                                            :description="history.descriptionTimeline" category="Relocation"
+                                                            icon="code" color="black" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -267,7 +266,7 @@ export default {
                     this.cow = response.data
                     this.cow.birthDate = toDateTime(this.cow.birthDate)
 
-                    axios.get(`${process.env.VUE_APP_API_URL}appointment/bovine/${this.cowId}`)  // eslint-disable-line
+                    axios.get(`${process.env.VUE_APP_API_URL}appointments/bovine/${this.cowId}`)  // eslint-disable-line
                         .then(response => {
                             this.appointments = response.data
                             this.appointments.forEach(appointment => {
@@ -275,8 +274,8 @@ export default {
                                 appointment.datePast = toNewDate(appointment.appointmentDate)
                                 appointment.title = this.indexOf(appointment.idAppointment) + "º- Motive: " + appointment.appointmentType
                                 appointment.descriptionTimeline = "<strong>Appointment</strong> cost: " + appointment.cost + "€"
-                                
-                                if(appointment.observation != ""){
+
+                                if (appointment.observation != "") {
                                     appointment.descriptionTimeline += "with the following observation" + appointment.observation + "."
                                 }
                             })

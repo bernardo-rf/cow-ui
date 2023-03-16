@@ -296,7 +296,7 @@ export default {
                         bovines.push(bovine.idBovine)
                     })
 
-                    axios.post(`${process.env.VUE_APP_API_URL}appointmentRequest/`, {  // eslint-disable-line
+                    axios.post(`${process.env.VUE_APP_API_URL}appointmentsRequest/`, {  // eslint-disable-line
                         "idUser": this.idUser,
                         "idUserRequest": this.idUserRequest,
                         "appointmentDate": this.appointmentDate,

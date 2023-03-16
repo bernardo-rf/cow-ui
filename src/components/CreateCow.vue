@@ -55,21 +55,20 @@
 															:message="validationContext.errors[0]">
 															<template slot="label">Serial Number <span
 																	class="has-text-danger">*</span></template>
-															<b-numberinput v-model="serialNumber" min="1"
-																:controls="false">
+															<b-numberinput v-model="serialNumber" min="1" :controls="false">
 															</b-numberinput>
 														</b-field>
 													</validation-provider>
 												</div>
 												<div class="column is-6">
-													<validation-provider vid="birthDate" rules="required"
-														name="Birth Date" v-slot="validationContext">
+													<validation-provider vid="birthDate" rules="required" name="Birth Date"
+														v-slot="validationContext">
 														<b-field expanded :type="getValidationState(validationContext)"
 															:message="validationContext.errors[0]">
 															<template slot="label">Birth Date <span
 																	class="has-text-danger">*</span></template>
 															<b-datetimepicker v-model="birthDate"
-																placeholder="Click to select..." 
+																placeholder="Click to select..."
 																:datepicker="{ showWeekNumber }"
 																:timepicker="{ enableSeconds, hourFormat: format }"
 																:max-datetime="dateNow" horizontal-time-picker>
@@ -138,7 +137,7 @@
 												<div class="column">
 													<validation-provider rules="required" name="Current Field"
 														v-slot="validationContext">
-														<b-field	 label="Cow Location"
+														<b-field label="Cow Location"
 															:type="getValidationState(validationContext)"
 															:message="validationContext.errors[0]">
 															<b-select v-model="idField" placeholder="Select a field"
@@ -159,8 +158,7 @@
 														<b-field :type="getValidationState(validationContext)"
 															:message="validationContext.errors[0]">
 															<template slot="label">Observation </template>
-															<b-input v-model="observation" maxlength="255"
-																type="textarea">
+															<b-input v-model="observation" maxlength="255" type="textarea">
 															</b-input>
 														</b-field>
 													</validation-provider>
@@ -174,7 +172,8 @@
 															:type="getValidationState(validationContext)"
 															:message="validationContext.errors[0]">
 															<b-switch v-model="gender" type="is-dark">
-																{{ gender ? 'Cow gender set as Masculine.' : "Cow gender set as Feminine."}}
+																{{ gender ? 'Cow gender set as Masculine.' :
+																	"Cow gender set as Feminine." }}
 															</b-switch>
 														</b-field>
 													</validation-provider>
@@ -221,8 +220,8 @@
 																<b-select v-model="parent1" placeholder="Select a cow"
 																	expanded
 																	:disabled="cowsMale.length != 0 ? false : true">
-																	<option v-for="cow in cowsMale"
-																		:value="cow.idBovine" :key="cow.idBovine">
+																	<option v-for="cow in cowsMale" :value="cow.idBovine"
+																		:key="cow.idBovine">
 																		{{ cow.serialNumber }}
 																	</option>
 																</b-select>
@@ -358,7 +357,7 @@ export default {
 						}
 					})
 
-					axios.get(`${process.env.VUE_APP_API_URL}fields/${this.$parent.user.idWallet}/not_occupied`)  // eslint-disable-line
+					axios.get(`${process.env.VUE_APP_API_URL}fields/${this.$parent.user.idWallet}/not-occupied`)  // eslint-disable-line
 						.then(response => {
 							this.fields = response.data
 							this.isLoadingPanel = false

@@ -107,7 +107,8 @@
                                                     <b-field label="Active" :type="getValidationState(validationContext)"
                                                         :message="validationContext.errors[0]">
                                                         <b-switch v-model="field.active" type="is-dark">
-                                                            {{ field.active ? 'Cows can be place in the field' : "Cows can't be place in the field"}}
+                                                            {{ field.active ? 'Cows can be place in the field' :
+                                                                "Cows can't be place in the field" }}
                                                         </b-switch>
                                                     </b-field>
                                                 </validation-provider>
@@ -248,7 +249,7 @@ export default {
                 .then(response => {
                     this.field = response.data
 
-                    axios.get(`${process.env.VUE_APP_API_URL}fields/bovines/${this.$route.params.fieldId}/notIn`) // eslint-disable-line
+                    axios.get(`${process.env.VUE_APP_API_URL}fields/${this.$route.params.fieldId}/bovines/not-in`) // eslint-disable-line
                         .then(response => {
                             this.cows = response.data
                             this.isLoadingPanel = false

@@ -18,7 +18,7 @@ localize("en", en);
 Vue.component("ValidationObserver", ValidationObserver);
 Vue.component("ValidationProvider", ValidationProvider);
 
-import VueCountdown from '@chenfengyuan/vue-countdown';
+import VueCountdown from "@chenfengyuan/vue-countdown";
 Vue.component(VueCountdown.name, VueCountdown);
 
 window._ = require("lodash");
@@ -54,7 +54,7 @@ import {
   faWrench,
   faStethoscope,
   faCheck,
-  faClose
+  faClose,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -86,7 +86,7 @@ library.add(
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
-import 'leaflet/dist/leaflet.css';
+import "leaflet/dist/leaflet.css";
 
 import Buefy from "buefy";
 import "buefy/dist/buefy.css";
@@ -96,7 +96,7 @@ Vue.use(Buefy, {
 });
 
 import VueTimeline from "@growthbunker/vuetimeline";
-Vue.use(VueTimeline, {theme: "light",});
+Vue.use(VueTimeline, { theme: "light" });
 
 Vue.config.productionTip = false;
 
@@ -125,9 +125,7 @@ window.axios.interceptors.response.use(
   (error) => {
     switch (error.response.status) {
       case 401:
-        if (
-          error.config.url != `${process.env.VUE_APP_API_URL}users/auth/`
-        ) {
+        if (error.config.url != `${process.env.VUE_APP_API_URL}users/auth/`) {
           app.$store.commit("logout");
           app.$router.push("/login");
           app.$buefy.toast.open({

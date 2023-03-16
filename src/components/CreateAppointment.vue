@@ -323,7 +323,7 @@ export default {
                     })
 
 
-                    axios.post(`${process.env.VUE_APP_API_URL}appointment/`, {  // eslint-disable-line
+                    axios.post(`${process.env.VUE_APP_API_URL}appointments/`, {  // eslint-disable-line
                         "idAppointmentRequest": 0,
                         "idUser": this.idUser,
                         "appointmentDate": this.appointmentDate,
